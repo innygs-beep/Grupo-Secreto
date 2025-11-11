@@ -126,14 +126,14 @@
 
             setTimeout(() => {
                 popup.classList.remove("show");
-            }, 2500);
+            }, 3000); // duração que o popup fica visível
         }
 
-        // Mostra o primeiro após 1 segundo, e depois a cada 3 segundos
+        // Mostra o primeiro após 2 segundos, e depois a cada 7 segundos
         setTimeout(() => {
             mostrarPopup();
-            setInterval(mostrarPopup, 3000);
-        }, 1000);
+            setInterval(mostrarPopup, 7000);
+        }, 2000);
     </script>
 </body>
 </html>
