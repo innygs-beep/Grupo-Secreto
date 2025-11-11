@@ -70,11 +70,27 @@
             border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
+            animation: bounce 1.6s infinite;
         }
 
-        a.button:hover {
+         a.button:hover {
             background: #a38367;
+            transform: translateY(-3px);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            a.button {
+                animation: none;
+                transition: background 0.2s ease;
+            }
+            a.button:hover { transform: none; }
         }
     </style>
 </head>
