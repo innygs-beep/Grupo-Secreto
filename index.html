@@ -1,153 +1,243 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Encantos em Oferta 💎</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #f6efe9, #e9dfd3);
-      color: #4b3621;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encantos em Oferta - Grupo Secreto</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-    h1 {
-      font-size: 1.8rem;
-      line-height: 1.3;
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 10px auto;
-    }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #d2bba3;
+            background-image: 
+                url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
+                url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
+                url('https://images.unsplash.com/photo-1580894740849-6119a80c1f49?auto=format&fit=crop&w=1400&q=60');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            flex-direction: column;
+        }
 
-    .cta {
-      background-color: #8b5e3c;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 16px 28px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 30px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      animation: pulse 2.5s infinite;
-    }
+        .container {
+            background-color: #f5ede2;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
+        img {
+            width: 120px;
+            margin-bottom: 10px;
+            border-radius: 50%;
+        }
 
-    .cta:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
+        h1 {
+            color: #8b6b4f;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
 
-    .popup {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #f5e9dc;
-      color: #4b3621;
-      padding: 12px 18px;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      opacity: 0;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      transform: translateY(20px);
-    }
+        p.subtitle {
+            color: #8b6b4f;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
 
-    .popup.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        a.button {
+            display: inline-block;
+            background: linear-gradient(90deg, #8b6b4f, #a38367);
+            color: white;
+            padding: 14px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
 
-    .footer {
-      position: absolute;
-      bottom: 10px;
-      font-size: 0.8rem;
-      color: #7a6a56;
-      opacity: 0.8;
-    }
+        a.button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
+        a.button:hover::after {
+            left: 200%;
+        }
 
-      p {
-        font-size: 0.95rem;
-      }
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
 
-      .cta {
-        width: 90%;
-        font-size: 1.1rem;
-      }
+        /* Pop-up */
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f5ede2;
+            color: #8b6b4f;
+            padding: 10px 18px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            z-index: 10;
+        }
 
-      .popup {
-        right: 10px;
-        bottom: 10px;
-        font-size: 0.85rem;
-        padding: 10px 14px;
-      }
-    }
-  </style>
+        .popup.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 🔒 Selo de segurança */
+        .security {
+            color: #6d523d;
+            font-size: 12px;
+            margin-top: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            opacity: 0.8;
+        }
+
+        .security img {
+            width: 18px;
+            height: 18px;
+            border-radius: 0;
+            margin: 0;
+        }
+
+        /* 📱 Responsividade */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+                background-position: center top;
+                background-attachment: scroll;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            img {
+                width: 90px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            p.subtitle {
+                font-size: 14px;
+            }
+
+            a.button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .popup {
+                bottom: 15px;
+                right: 15px;
+                font-size: 13px;
+                padding: 8px 14px;
+            }
+
+            .security {
+                font-size: 11px;
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <img src="logo.jpeg" alt="Logo Encantos">
+        <h1>GRUPO SECRETO DE OFERTAS</h1>
+        <p class="subtitle">
+            O botão abaixo é a sua porta de entrada para o grupo mais exclusivo de promoções da internet! 
+            É 100% grátis — você não paga nada para entrar, é só clicar e começar a aproveitar as ofertas.
+            Mas corra! As vagas são limitadas e, quando o grupo encher, ele será fechado para novos membros.
+            Não perca a chance de receber descontos absurdos, cupons escondidos e promoções que duram minutos!
+        </p>
+        <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank">Entrar Agora!</a>
 
-  <h1>Entre para o grupo exclusivo de ofertas da Encantos!</h1>
+        <div class="security">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Check_green_icon.svg" alt="Verificado">
+            Site 100% seguro e grupo oficial Encantos em Oferta
+        </div>
+    </div>
 
-  <p>O botão abaixo é a sua porta de entrada para o grupo mais exclusivo de promoções da internet!</p>
+    <div id="popup" class="popup"></div>
 
-  <p>É <strong>100% grátis</strong> — você não paga nada para entrar, é só clicar e começar a aproveitar as ofertas.</p>
+    <script>
+        const nomes = [
+            "Ana", "Lucas", "Fernanda", "Maria Clara", "João Gabriel", "Pedro Henrique", "Isabela", "Rafael", "Larissa",
+            "Gabriel", "Camila", "Matheus", "Luana", "Caio", "Bianca", "Eduardo", "Juliana", "Vinícius", "Amanda", "Felipe",
+            "Sofia", "Leonardo", "Beatriz", "Gustavo", "Letícia", "Thiago", "Carolina", "Bruno", "Marina", "André", "Vitória",
+            "Rodrigo", "Patrícia", "Diego", "Natália", "Daniel", "Gabriela", "Hugo", "Manuela", "Vitor", "Bruna", "Igor",
+            "Marcelo", "Roberta", "Henrique", "Lorena", "Paulo", "Nicole", "Murilo", "Vanessa", "Antônio", "Cláudia",
+            "Samuel", "Carla", "Otávio", "Evelyn", "Renato", "Mirella", "Arthur", "Débora", "Luiz Felipe", "Alice", "Bernardo",
+            "Melissa", "João Pedro", "Caroline", "José Augusto", "Caíque", "Marta", "Nathan", "Yasmin", "Cauã", "Clarice",
+            "Pietro", "Lorraine", "Miguel", "Aline", "Sérgio", "Jéssica", "Alex", "Priscila", "Francisco", "Tainá", "Rogério",
+            "Elisa", "Anderson", "Lívia", "Enzo Gabriel", "Mariana", "Luiz Otávio", "Cecília", "João Vitor", "Eduarda",
+            "Ricardo José", "Rebeca"
+        ];
 
-  <p>Mas corra! As vagas são limitadas e, quando o grupo encher, ele será fechado para novos membros.</p>
+        function mostrarPopup() {
+            const nome = nomes[Math.floor(Math.random() * nomes.length)];
+            const popup = document.createElement('div');
+            popup.className = 'popup show';
+            popup.textContent = `${nome} entrou no grupo.`;
+            document.body.appendChild(popup);
 
-  <p><strong>Não perca a chance</strong> de receber descontos absurdos, cupons escondidos e promoções que duram minutos!</p>
+            setTimeout(() => popup.classList.remove('show'), 4000);
+            setTimeout(() => popup.remove(), 4600);
+        }
 
-  <button class="cta" onclick="window.open('https://seu-link-do-grupo-aqui', '_blank')">Entrar Agora!</button>
+        function iniciarPopups() {
+            const intervalo = Math.floor(Math.random() * 8000) + 6000; // entre 6s e 14s
+            mostrarPopup();
+            setTimeout(iniciarPopups, intervalo);
+        }
 
-  <div class="footer">
-    🔒 Ambiente 100% seguro e verificado.
-  </div>
-
-  <div id="popup" class="popup"></div>
-
-  <script>
-    const names = ["Pedro", "Helena", "Lucas", "Mariana", "Rafael", "Camila", "Gustavo", "Laura", "João", "Isabela", "Bruno", "Ana", "Felipe", "Vitória", "Eduarda", "Caio", "Letícia", "André", "Carolina", "Marcelo"];
-    const popup = document.getElementById("popup");
-
-    function showPopup() {
-      const randomName = names[Math.floor(Math.random() * names.length)];
-      popup.textContent = `${randomName} entrou no grupo.`;
-      popup.classList.add("show");
-
-      setTimeout(() => {
-        popup.classList.remove("show");
-      }, 3500);
-    }
-
-    setInterval(showPopup, 6000); // aparece um nome novo a cada 6 segundos
-  </script>
-
+        setTimeout(iniciarPopups, 5000);
+    </script>
 </body>
 </html>
