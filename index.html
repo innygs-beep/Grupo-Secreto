@@ -184,21 +184,33 @@
                 margin-top: 10px;
             }
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img src="logo.jpeg" alt="Logo Encantos">
-        <h1>GRUPO SECRETO DE OFERTAS</h1>
-        <p class="subtitle">
-            O botão abaixo é a sua porta de entrada para o grupo mais exclusivo de promoções da internet! 
-            É 100% grátis — você não paga nada para entrar, é só clicar e começar a aproveitar as ofertas.
-            Mas corra! As vagas são limitadas e, quando o grupo encher, ele será fechado para novos membros.
-            Não perca a chance de receber descontos absurdos, cupons escondidos e promoções que duram minutos!
-        </p>
-        <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank">Entrar Agora!</a>
+   <style>
+  .fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 1s ease forwards;
+  }
 
-        <div class="security">
+  .fade-in:nth-child(1) { animation-delay: 0.2s; }
+  .fade-in:nth-child(2) { animation-delay: 0.4s; }
+  .fade-in:nth-child(3) { animation-delay: 0.6s; }
+  .fade-in:nth-child(4) { animation-delay: 0.8s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<p class="fade-in">O botão abaixo é a sua porta de entrada para o grupo mais exclusivo de promoções da internet!</p>
+
+<p class="fade-in">É <strong>100% grátis</strong> — você não paga nada para entrar, é só clicar e começar a aproveitar as ofertas.</p>
+
+<p class="fade-in"><strong>Mas corra!</strong> As vagas são limitadas e, quando o grupo encher, ele será fechado para novos membros.</p>
+
+<p class="fade-in">Não perca a chance de receber <strong>descontos absurdos</strong>, <strong>cupons escondidos</strong> e <strong>promoções que duram minutos!</strong></p>
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado">
             Ambiente 100% seguro e verificado.
         </div>
