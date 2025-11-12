@@ -7,30 +7,37 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #d2bba3;
-            background-image: url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
-                              url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
-                              url('https://images.unsplash.com/photo-1580894740849-6119a80c1f49?auto=format&fit=crop&w=1400&q=60');
+            background-image: 
+                url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
+                url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
+                url('https://images.unsplash.com/photo-1580894740849-6119a80c1f49?auto=format&fit=crop&w=1400&q=60');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             background-blend-mode: overlay;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            padding: 20px;
         }
 
         .container {
             background-color: #f5ede2;
             border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            padding: 40px;
+            padding: 40px 30px;
             text-align: center;
             max-width: 420px;
-            width: 90%;
+            width: 100%;
             position: relative;
             z-index: 2;
         }
@@ -52,7 +59,7 @@
             color: #8b6b4f;
             font-size: 15px;
             font-weight: 500;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             line-height: 1.5;
         }
 
@@ -65,8 +72,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: background 0.3s ease;
-            transform-origin: center;
-            animation: bounce 1.5s infinite ease-in-out running !important;
+            animation: bounce 1.5s infinite ease-in-out;
         }
 
         a.button:hover {
@@ -75,16 +81,16 @@
 
         @keyframes bounce {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.08); }
         }
 
-        /* Pop-up dos nomes */
+        /* Pop-up */
         .popup {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #8b6b4f;
-            color: white;
+            background-color: #f5ede2;
+            color: #8b6b4f;
             padding: 10px 18px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -93,13 +99,50 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
-            font-family: 'Poppins', sans-serif;
-            z-index: 9999;
+            z-index: 10;
         }
 
         .popup.show {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* 📱 Responsividade para celular */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+                background-position: center top;
+                background-attachment: scroll;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            img {
+                width: 90px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            p.subtitle {
+                font-size: 14px;
+            }
+
+            a.button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .popup {
+                bottom: 15px;
+                right: 15px;
+                font-size: 13px;
+                padding: 8px 14px;
+            }
         }
     </style>
 </head>
@@ -109,15 +152,14 @@
         <h1>GRUPO SECRETO DE OFERTAS</h1>
         <p class="subtitle">
             O botão abaixo é a sua porta de entrada para o grupo mais exclusivo de promoções da internet! 
-            <br><br>
-            A boa notícia? É 100% grátis — você não paga nada para entrar, é só clicar e começar a aproveitar as ofertas.
-            <br><br>
+            É 100% grátis — você não paga nada para entrar, é só clicar e começar a aproveitar as ofertas.
             Mas corra! As vagas são limitadas e, quando o grupo encher, ele será fechado para novos membros.
-            <br><br>
             Não perca a chance de receber descontos absurdos, cupons escondidos e promoções que duram minutos!
         </p>
         <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank">Entrar Agora!</a>
     </div>
+
+    <div id="popup" class="popup"></div>
 
     <script>
         const nomes = [
@@ -136,18 +178,12 @@
         function mostrarPopup() {
             const nome = nomes[Math.floor(Math.random() * nomes.length)];
             const popup = document.createElement('div');
-            popup.classList.add('popup');
-            popup.textContent = `${nome} entrou no grupo.`;
+            popup.className = 'popup show';
+            popup.textContent = `${nome} acabou de entrar no grupo 🎉`;
             document.body.appendChild(popup);
 
-            // Exibe o popup
-            setTimeout(() => popup.classList.add('show'), 100);
-
-            // Remove o popup após 4 segundos
-            setTimeout(() => {
-                popup.classList.remove('show');
-                setTimeout(() => popup.remove(), 600);
-            }, 4000);
+            setTimeout(() => popup.classList.remove('show'), 4000);
+            setTimeout(() => popup.remove(), 4600);
         }
 
         function iniciarPopups() {
