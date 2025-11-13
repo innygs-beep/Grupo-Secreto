@@ -134,11 +134,25 @@
             transform: translateY(20px);
             transition: all 0.6s ease;
             z-index: 10;
+            animation: fadeInPopup 0.8s ease forwards, fadeOutPopup 0.8s ease forwards 3.8s;
         }
 
-        .popup.show {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeInPopup {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOutPopup {
+            to {
+                opacity: 0;
+                transform: translateY(20px);
+            }
         }
 
         /* 🔒 Selo de segurança */
@@ -224,8 +238,6 @@
         </div>
     </div>
 
-    <div id="popup" class="popup"></div>
-
     <script>
         const nomes = [
             "Ana", "Lucas", "Fernanda", "Maria Clara", "João Gabriel", "Pedro Henrique", "Isabela", "Rafael", "Larissa",
@@ -240,19 +252,26 @@
             "Ricardo José", "Rebeca"
         ];
 
+        // 🔊 Som suave
+        const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
+
         function mostrarPopup() {
             const nome = nomes[Math.floor(Math.random() * nomes.length)];
             const popup = document.createElement('div');
-            popup.className = 'popup show';
+            popup.className = 'popup';
             popup.textContent = `${nome} entrou no grupo.`;
             document.body.appendChild(popup);
 
-            setTimeout(() => popup.classList.remove('show'), 4000);
+            // 🔉 Toca som suave no surgimento
+            audio.currentTime = 0;
+            audio.volume = 0.15; // volume bem baixo
+            audio.play();
+
             setTimeout(() => popup.remove(), 4600);
         }
 
         function iniciarPopups() {
-            const intervalo = Math.floor(Math.random() * 8000) + 6000; // entre 6s e 14s
+            const intervalo = Math.floor(Math.random() * 8000) + 6000;
             mostrarPopup();
             setTimeout(iniciarPopups, intervalo);
         }
