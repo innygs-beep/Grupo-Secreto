@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Encantos em Oferta - Grupo Secreto</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #d2bba3;
-            background-image: 
+            background-image:
                 url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
                 url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
                 url('https://images.unsplash.com/photo-1580894740849-6119a80c1f49?auto=format&fit=crop&w=1400&q=60');
@@ -109,9 +107,7 @@
             transition: left 0.6s ease;
         }
 
-        a.button:hover::after {
-            left: 200%;
-        }
+        a.button:hover::after { left: 200%; }
 
         @keyframes bounce {
             0%, 100% { transform: scale(1); }
@@ -125,16 +121,17 @@
             opacity: 0.85;
         }
 
+        /* security: alinhamento garantido */
         .security {
             color: #6d523d;
             font-size: 12px;
             margin-top: 15px;
             text-align: center;
             display: flex;
-            align-items: center;
+            align-items: center; /* garante alinhamento vertical */
             justify-content: center;
-            gap: 6px;
-            opacity: 0.8;
+            gap: 8px;
+            opacity: 0.9;
         }
 
         .security img {
@@ -142,6 +139,55 @@
             height: 18px;
             border-radius: 0;
             margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* POP-UP (restaurado e ajustado) */
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: #6d523d;
+            padding: 10px 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            z-index: 9999;
+            display: inline-block;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        @keyframes fadeInPopup {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOutPopup {
+            to {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        /* Esses estilos permitem que a animação funcione como antes (fade in/out) */
+        .popup.show {
+            animation: fadeInPopup 0.35s ease forwards;
+        }
+
+        .popup.hide {
+            animation: fadeOutPopup 0.35s ease forwards;
         }
 
         @media (max-width: 600px) {
@@ -156,33 +202,28 @@
                 border-radius: 15px;
             }
 
-            img {
-                width: 90px;
+            img { width: 90px; }
+
+            h1 { font-size: 20px; }
+
+            .subtitle { font-size: 14px; }
+
+            a.button { padding: 12px 20px; font-size: 14px; }
+
+            .popup {
+                bottom: 15px;
+                right: 15px;
+                font-size: 13px;
+                padding: 8px 12px;
             }
 
-            h1 {
-                font-size: 20px;
-            }
-
-            .subtitle {
-                font-size: 14px;
-            }
-
-            a.button {
-                padding: 12px 20px;
-                font-size: 14px;
-            }
-
-            .security {
-                font-size: 11px;
-                margin-top: 10px;
-            }
+            .security { font-size: 11px; margin-top: 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="logo.jpeg" alt="Logo Encantos">
+        <img src="logo.jpeg" alt="Logo Encantos" />
         <h1>GRUPO SECRETO DE OFERTAS</h1>
 
         <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
@@ -190,12 +231,12 @@
         <p class="subtitle fade-in">Depois que o grupo lotar, o acesso será fechado.</p>
         <p class="subtitle fade-in">Entre agora e garanta seu lugar antes que acabe.</p>
 
-        <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank">Acessar as Ofertas Agora!</a>
+        <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
 
         <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
 
         <div class="security">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
             Entrada protegida, sem SPAM. Você pode sair quando quiser.
         </div>
     </div>
@@ -214,6 +255,7 @@
             "Ricardo José", "Rebeca"
         ];
 
+        // Som suave
         const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
         function mostrarPopup() {
@@ -223,11 +265,20 @@
             popup.textContent = `${nome} entrou no grupo.`;
             document.body.appendChild(popup);
 
+            // forçar a classe de show para animar entrada
+            setTimeout(() => popup.classList.add('show'), 10);
+
+            // tocar som suave
             audio.currentTime = 0;
             audio.volume = 0.15;
-            audio.play();
+            audio.play().catch(()=>{ /* autoplay pode falhar em alguns navegadores - silencioso */ });
 
-            setTimeout(() => popup.remove(), 4600);
+            // depois de 4.6s faz a animação de hide e remove
+            setTimeout(() => {
+                popup.classList.remove('show');
+                popup.classList.add('hide');
+                setTimeout(() => popup.remove(), 420);
+            }, 4600);
         }
 
         function iniciarPopups() {
@@ -236,6 +287,7 @@
             setTimeout(iniciarPopups, intervalo);
         }
 
+        // mantém exatamente o timing que você já tinha (start = 5000ms)
         setTimeout(iniciarPopups, 5000);
     </script>
 </body>
