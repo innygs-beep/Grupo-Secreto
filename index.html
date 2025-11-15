@@ -121,29 +121,34 @@
             opacity: 0.85;
         }
 
-        /* security: alinhamento garantido */
+        /* security: ícone ANTECEDE o texto e tudo em UMA LINHA */
         .security {
-    color: #6d523d;
-    font-size: 12px;
-    margin: 12px auto 0 auto;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    max-width: 260px; /* impede quebra feia */
-    line-height: 1.35; /* deixa mais elegante */
-    flex-wrap: wrap;   /* permite quebra suave */
-}
+            color: #6d523d;
+            font-size: 12px;
+            margin-top: 12px;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.95;
+            white-space: nowrap;     /* força uma única linha */
+            max-width: 100%;         /* permite centralizar */
+            padding: 4px 8px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.security img {
-    width: 16px;
-    height: 16px;
-    margin-top: -1px; /* correção fina do alinhamento vertical */
-    display: inline-block;
-}
+        .security img {
+            width: 16px;
+            height: 16px;
+            border-radius: 0;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
 
-        /* POP-UP (restaurado e ajustado) */
+        /* POP-UP (mantido) */
         .popup {
             position: fixed;
             bottom: 20px;
@@ -164,31 +169,16 @@
         }
 
         @keyframes fadeInPopup {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeOutPopup {
-            to {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+            to { opacity: 0; transform: translateY(20px); }
         }
 
-        /* Esses estilos permitem que a animação funcione como antes (fade in/out) */
-        .popup.show {
-            animation: fadeInPopup 0.35s ease forwards;
-        }
-
-        .popup.hide {
-            animation: fadeOutPopup 0.35s ease forwards;
-        }
+        .popup.show { animation: fadeInPopup 0.35s ease forwards; }
+        .popup.hide { animation: fadeOutPopup 0.35s ease forwards; }
 
         @media (max-width: 600px) {
             body {
@@ -210,14 +200,18 @@
 
             a.button { padding: 12px 20px; font-size: 14px; }
 
+            .security {
+                font-size: 12px;
+                gap: 8px;
+                /* em telas muito estreitas, reduzimos levemente o ícone/texto para manter 1 linha */
+            }
+
             .popup {
                 bottom: 15px;
                 right: 15px;
                 font-size: 13px;
                 padding: 8px 12px;
             }
-
-            .security { font-size: 11px; margin-top: 10px; }
         }
     </style>
 </head>
@@ -235,9 +229,10 @@
 
         <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
 
+        <!-- ícone antecedendo a frase, tudo em uma linha -->
         <div class="security">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
-            Entrada protegida, sem SPAM. Você pode sair quando quiser.
+            <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
         </div>
     </div>
 
