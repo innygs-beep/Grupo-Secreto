@@ -123,25 +123,25 @@
 
         /* security: alinhamento garantido */
         .security {
-            color: #6d523d;
-            font-size: 12px;
-            margin-top: 15px;
-            text-align: center;
-            display: flex;
-            align-items: center; /* garante alinhamento vertical */
-            justify-content: center;
-            gap: 8px;
-            opacity: 0.9;
-        }
+    color: #6d523d;
+    font-size: 12px;
+    margin: 12px auto 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: 260px; /* impede quebra feia */
+    line-height: 1.35; /* deixa mais elegante */
+    flex-wrap: wrap;   /* permite quebra suave */
+}
 
-        .security img {
-            width: 18px;
-            height: 18px;
-            border-radius: 0;
-            margin: 0;
-            display: inline-block;
-            vertical-align: middle;
-        }
+.security img {
+    width: 16px;
+    height: 16px;
+    margin-top: -1px; /* correção fina do alinhamento vertical */
+    display: inline-block;
+}
 
         /* POP-UP (restaurado e ajustado) */
         .popup {
