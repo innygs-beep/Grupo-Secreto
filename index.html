@@ -56,7 +56,6 @@
             margin-bottom: 15px;
         }
 
-        /* Texto principal em estrofes */
         .subtitle {
             color: #8b6b4f;
             font-size: 15px;
@@ -118,7 +117,6 @@
             50% { transform: scale(1.08); }
         }
 
-        /* Pop-up */
         .popup {
             position: fixed;
             bottom: 20px;
@@ -155,7 +153,6 @@
             }
         }
 
-        /* 🔒 Selo de segurança */
         .security {
             color: #6d523d;
             font-size: 12px;
@@ -175,7 +172,6 @@
             margin: 0;
         }
 
-        /* 📱 Responsividade */
         @media (max-width: 600px) {
             body {
                 padding: 15px;
@@ -224,11 +220,11 @@
         <img src="logo.jpeg" alt="Logo Encantos">
         <h1>GRUPO SECRETO DE OFERTAS</h1>
 
-        <!-- Texto dividido em estrofes com animação -->
-        <p class="subtitle fade-in">O botão abaixo é a sua porta de entrada para o grupo de Whatsapp mais exclusivo de promoções da internet!</p>
-        <p class="subtitle fade-in">É <strong>100% grátis</strong> — você não paga nada para entrar, é só clicar e começar a aproveitar as ofertas.</p>
-        <p class="subtitle fade-in"><strong>Mas corra!</strong> As vagas são limitadas e, quando o grupo encher, ele será fechado para novos membros.</p>
-        <p class="subtitle fade-in">Não perca a chance de receber <strong>descontos absurdos</strong>, <strong>cupons escondidos</strong> e <strong>promoções que duram minutos!</strong></p>
+        <!-- NOVA COPY OTIMIZADA -->
+        <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
+        <p class="subtitle fade-in"><strong style="color:#8b6b4f;">⚠️ Últimas vagas disponíveis.</strong></p>
+        <p class="subtitle fade-in">Depois que o grupo lotar, o acesso será fechado.</p>
+        <p class="subtitle fade-in">Entre agora e garanta seu lugar antes que acabe.</p>
 
         <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank">Entrar Agora!</a>
 
@@ -252,7 +248,6 @@
             "Ricardo José", "Rebeca"
         ];
 
-        // 🔊 Som suave
         const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
         function mostrarPopup() {
@@ -262,9 +257,8 @@
             popup.textContent = `${nome} entrou no grupo.`;
             document.body.appendChild(popup);
 
-            // 🔉 Toca som suave no surgimento
             audio.currentTime = 0;
-            audio.volume = 0.15; // volume bem baixo
+            audio.volume = 0.15;
             audio.play();
 
             setTimeout(() => popup.remove(), 4600);
