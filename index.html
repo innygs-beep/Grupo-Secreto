@@ -121,7 +121,6 @@
             opacity: 0.85;
         }
 
-        /* security: ícone ANTECEDE o texto e tudo em UMA LINHA */
         .security {
             color: #6d523d;
             font-size: 12px;
@@ -132,8 +131,8 @@
             justify-content: center;
             gap: 8px;
             opacity: 0.95;
-            white-space: nowrap;     /* força uma única linha */
-            max-width: 100%;         /* permite centralizar */
+            white-space: nowrap;
+            max-width: 100%;
             padding: 4px 8px;
             margin-left: auto;
             margin-right: auto;
@@ -148,7 +147,7 @@
             vertical-align: middle;
         }
 
-        /* POP-UP (mantido) */
+        /* POP-UP */
         .popup {
             position: fixed;
             bottom: 20px;
@@ -180,43 +179,33 @@
         .popup.show { animation: fadeInPopup 0.35s ease forwards; }
         .popup.hide { animation: fadeOutPopup 0.35s ease forwards; }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 15px;
-                background-position: center top;
-                background-attachment: scroll;
-            }
+        /* BALÃO DAS VAGAS */
+        .vagas {
+            background: #fff7e6;
+            border: 2px solid #c9a678;
+            color: #8b6b4f;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
 
-            .container {
-                padding: 30px 20px;
-                border-radius: 15px;
-            }
-
-            img { width: 90px; }
-
-            h1 { font-size: 20px; }
-
-            .subtitle { font-size: 14px; }
-
-            a.button { padding: 12px 20px; font-size: 14px; }
-
-            .security {
-                font-size: 12px;
-                gap: 8px;
-                /* em telas muito estreitas, reduzimos levemente o ícone/texto para manter 1 linha */
-            }
-
-            .popup {
-                bottom: 15px;
-                right: 15px;
-                font-size: 13px;
-                padding: 8px 12px;
-            }
+        .vagas.alerta {
+            background: #ffe6e6;
+            border-color: #ff6b6b;
+            color: #b40000;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
+
+        <!-- BALÃO DE VAGAS -->
+        <div class="vagas" id="vagasBox">Restam <strong id="vagasNum">21</strong> vagas</div>
+
         <img src="logo.jpeg" alt="Logo Encantos" />
         <h1>GRUPO SECRETO DE OFERTAS</h1>
 
@@ -229,7 +218,6 @@
 
         <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
 
-        <!-- ícone antecedendo a frase, tudo em uma linha -->
         <div class="security">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
             <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
@@ -237,6 +225,20 @@
     </div>
 
     <script>
+        let vagas = 21; // início solicitado
+
+        function diminuirVaga() {
+            if (vagas > 0) {
+                vagas--;
+                document.getElementById("vagasNum").textContent = vagas;
+
+                // ALERTA abaixo de 6 vagas
+                if (vagas <= 5) {
+                    document.getElementById("vagasBox").classList.add("alerta");
+                }
+            }
+        }
+
         const nomes = [
             "Ana", "Lucas", "Fernanda", "Maria Clara", "João Gabriel", "Pedro Henrique", "Isabela", "Rafael", "Larissa",
             "Gabriel", "Camila", "Matheus", "Luana", "Caio", "Bianca", "Eduardo", "Juliana", "Vinícius", "Amanda", "Felipe",
@@ -250,7 +252,6 @@
             "Ricardo José", "Rebeca"
         ];
 
-        // Som suave
         const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
         function mostrarPopup() {
@@ -260,20 +261,20 @@
             popup.textContent = `${nome} entrou no grupo.`;
             document.body.appendChild(popup);
 
-            // forçar a classe de show para animar entrada
             setTimeout(() => popup.classList.add('show'), 10);
 
-            // tocar som suave
             audio.currentTime = 0;
             audio.volume = 0.15;
-            audio.play().catch(()=>{ /* autoplay pode falhar em alguns navegadores - silencioso */ });
+            audio.play().catch(()=>{});
 
-            // depois de 4.6s faz a animação de hide e remove
             setTimeout(() => {
                 popup.classList.remove('show');
                 popup.classList.add('hide');
                 setTimeout(() => popup.remove(), 420);
             }, 4600);
+
+            // DIMINUI VAGA SINCRONIZADO COM POPUP
+            diminuirVaga();
         }
 
         function iniciarPopups() {
@@ -282,7 +283,6 @@
             setTimeout(iniciarPopups, intervalo);
         }
 
-        // mantém exatamente o timing que você já tinha (start = 5000ms)
         setTimeout(iniciarPopups, 5000);
     </script>
 </body>
