@@ -218,7 +218,7 @@ a.button:hover::after { left: 200%; }
     <div class="logo-vagas-wrap">
         <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
 
-        <!-- CORRIGIDO AQUI: espaço ajustado -->
+        <!-- BALÃO CORRIGIDO AQUI -->
         <div id="vagaBox" class="vagas-balao">
             Restam <span id="vagasNum">21</span> Vagas!
         </div>
@@ -262,7 +262,6 @@ function atualizarOnline() {
     const variacao = Math.floor(Math.random() * 7) - 3; // -3..+3
     online = Math.max(82, Math.min(220, online + variacao));
     onlineEl.textContent = online;
-    // variação aleatória mais lenta pra parecer natural
     setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
 }
 setTimeout(atualizarOnline, 1200);
