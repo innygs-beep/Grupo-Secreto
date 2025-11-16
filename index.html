@@ -43,7 +43,7 @@ body {
     position: relative;
 }
 
-/* wrapper para manter logo + vagas centralizados sem deslocamento */
+/* wrapper para manter logo + vagas + pessoas online centralizados */
 .logo-vagas-wrap {
     display: flex;
     flex-direction: column;
@@ -78,16 +78,6 @@ img {
     transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
 }
 
-/* BOLINHA VERDE (ONLINE) */
-.bolinha-verde {
-    width: 10px;
-    height: 10px;
-    background-color: #2ecc71;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 6px;
-}
-
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.04); }
@@ -106,6 +96,31 @@ img {
     100% { transform: scale(1); }
 }
 
+/* ====== CONTADOR ONLINE (BOLINHA VERDE + TEXTO) ====== */
+.online-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #8b6b4f;
+    background: rgba(255,255,255,0.9);
+    padding: 6px 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    white-space: nowrap;
+}
+
+.online-dot {
+    width: 10px;
+    height: 10px;
+    background: #2ecc71; /* verde online */
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(46,204,113,0.35);
+}
+
+/* ====== RESTANTE DO CSS ORIGINAL ====== */
 h1 {
     color: #8b6b4f;
     font-size: 22px;
@@ -192,6 +207,7 @@ a.button:hover::after { left: 200%; }
     h1 { font-size:20px; }
     .popup { bottom:15px; right:15px; font-size:13px; padding:8px 12px; }
     .vagas-balao { min-width: 100px; font-size:15px; padding:8px 12px; }
+    .online-counter { font-size:13px; padding:6px 10px; }
 }
 </style>
 </head>
@@ -202,9 +218,17 @@ a.button:hover::after { left: 200%; }
     <div class="logo-vagas-wrap">
         <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
 
+        <!-- BALÃO: texto corrigido para "Restam X Vagas!" (ESPAÇAMENTO e EXCLAMAÇÃO) -->
         <div id="vagaBox" class="vagas-balao">
-            <span class="bolinha-verde"></span> Restam <span id="vagasNum">21</span> vagas
+            Restam <span id="vagasNum">21</span> Vagas!
         </div>
+
+        <!-- CONTADOR ONLINE FAKE (bolinha verde antes do texto) -->
+        <div id="onlineCounter" class="online-counter">
+            <span class="online-dot" aria-hidden="true"></span>
+            <span id="onlineNum">137</span> pessoas online agora
+        </div>
+
     </div>
 
     <h1>GRUPO SECRETO DE OFERTAS</h1>
@@ -232,6 +256,19 @@ const vagaBoxEl = document.getElementById('vagaBox');
 let basePopupMin = 6000;
 let basePopupMax = 14000;
 
+/* ===== Conta online (fake) ===== */
+let online = 137;
+const onlineEl = document.getElementById('onlineNum');
+function atualizarOnline() {
+    const variacao = Math.floor(Math.random() * 7) - 3; // -3..+3
+    online = Math.max(82, Math.min(220, online + variacao));
+    onlineEl.textContent = online;
+    // variação aleatória mais lenta pra parecer natural
+    setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
+}
+setTimeout(atualizarOnline, 1200);
+
+/* POPUPS e vagas (sem alterações em lógica) */
 const nomes = [
   "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
   "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo"
@@ -239,10 +276,9 @@ const nomes = [
 
 const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
-/* Atualiza visual do balão */
 function atualizaVisualVagas() {
     if (vagas <= 0) {
-        vagaBoxEl.innerHTML = "<span class='bolinha-verde'></span> Grupo LOTADO! Aguarde novas vagas.";
+        vagaBoxEl.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
         return;
     }
     vagaNumEl.textContent = vagas;
@@ -254,14 +290,12 @@ function atualizaVisualVagas() {
     }
 }
 
-/* Diminui vaga sincronizado */
 function diminuirVaga() {
     if (vagas <= 0) return;
     vagas = Math.max(0, vagas - 1);
     atualizaVisualVagas();
 }
 
-/* Cria popup */
 function mostrarPopup() {
     if (vagas <= 0) return;
 
@@ -311,7 +345,6 @@ function startPopups() {
 }
 
 atualizaVisualVagas();
-
 setTimeout(startPopups, 5000);
 </script>
 
