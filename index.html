@@ -43,7 +43,7 @@ body {
     position: relative;
 }
 
-/* wrapper para manter logo + vagas + pessoas online centralizados */
+/* wrapper para manter logo + vagas centralizados sem deslocamento */
 .logo-vagas-wrap {
     display: flex;
     flex-direction: column;
@@ -72,10 +72,20 @@ img {
     background: linear-gradient(90deg,#ff6b6b,#ff3b3b);
     color: #fff;
     box-shadow: 0 6px 18px rgba(255,80,80,0.16);
-    min-width: 120px; 
+    min-width: 140px; 
     text-align:center;
     animation: pulse 1.8s ease-in-out infinite;
     transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
+}
+
+/* BOLINHA VERDE (ONLINE) */
+.bolinha-verde {
+    width: 10px;
+    height: 10px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
 }
 
 @keyframes pulse {
@@ -94,17 +104,6 @@ img {
     0% { transform: scale(1); }
     50% { transform: scale(1.12); }
     100% { transform: scale(1); }
-}
-
-.online-counter {
-    font-size: 14px;
-    font-weight: 600;
-    color: #8b6b4f;
-    background: #ffffffd7;
-    padding: 6px 14px;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    margin-top: 2px;
 }
 
 h1 {
@@ -159,11 +158,7 @@ a.button::after {
     transition: left 0.6s ease;
 }
 a.button:hover::after { left: 200%; }
-
-@keyframes bounce {
-    0%,100% { transform: scale(1);} 
-    50% { transform: scale(1.08);} 
-}
+@keyframes bounce { 0%,100% { transform: scale(1);} 50% { transform: scale(1.08);} }
 
 .subproof { color: #6d523d; font-size: 13px; margin-bottom: 12px; opacity: 0.95; }
 
@@ -197,7 +192,6 @@ a.button:hover::after { left: 200%; }
     h1 { font-size:20px; }
     .popup { bottom:15px; right:15px; font-size:13px; padding:8px 12px; }
     .vagas-balao { min-width: 100px; font-size:15px; padding:8px 12px; }
-    .online-counter { font-size:13px; padding:5px 12px; }
 }
 </style>
 </head>
@@ -206,18 +200,11 @@ a.button:hover::after { left: 200%; }
 <div class="container">
 
     <div class="logo-vagas-wrap">
-
         <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
 
         <div id="vagaBox" class="vagas-balao">
-            Restam <span id="vagasNum">21</span> vagas
+            <span class="bolinha-verde"></span> Restam <span id="vagasNum">21</span> vagas
         </div>
-
-        <!-- 🟢 CONTADOR DE PESSOAS ONLINE -->
-        <div id="onlineCounter" class="online-counter">
-            👥 <span id="onlineNum">137</span> pessoas online agora
-        </div>
-
     </div>
 
     <h1>GRUPO SECRETO DE OFERTAS</h1>
@@ -237,24 +224,11 @@ a.button:hover::after { left: 200%; }
     </div>
 </div>
 
-
 <script>
 let vagas = 21;
 const vagaNumEl = document.getElementById('vagasNum');
 const vagaBoxEl = document.getElementById('vagaBox');
 
-/* ==== CONTADOR ONLINE FAKE ==== */
-let online = 137;
-const onlineEl = document.getElementById("onlineNum");
-
-function atualizarOnline() {
-    const variacao = Math.floor(Math.random() * 7) - 3; 
-    online = Math.max(82, online + variacao);
-    onlineEl.textContent = online;
-}
-setInterval(atualizarOnline, 4000);
-
-/* POPUPS e vagas */
 let basePopupMin = 6000;
 let basePopupMax = 14000;
 
@@ -265,9 +239,10 @@ const nomes = [
 
 const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
+/* Atualiza visual do balão */
 function atualizaVisualVagas() {
     if (vagas <= 0) {
-        vagaBoxEl.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
+        vagaBoxEl.innerHTML = "<span class='bolinha-verde'></span> Grupo LOTADO! Aguarde novas vagas.";
         return;
     }
     vagaNumEl.textContent = vagas;
@@ -279,12 +254,14 @@ function atualizaVisualVagas() {
     }
 }
 
+/* Diminui vaga sincronizado */
 function diminuirVaga() {
     if (vagas <= 0) return;
     vagas = Math.max(0, vagas - 1);
     atualizaVisualVagas();
 }
 
+/* Cria popup */
 function mostrarPopup() {
     if (vagas <= 0) return;
 
