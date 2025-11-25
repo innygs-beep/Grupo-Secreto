@@ -65,7 +65,7 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; /* <--- adicionado: garante espaçamento entre "Restam", número e "Vagas!" */
+    gap: 8px; 
     padding: 8px 16px;
     border-radius: 14px;
     font-size: 16px;
@@ -97,7 +97,7 @@ img {
     100% { transform: scale(1); }
 }
 
-/* ====== CONTADOR ONLINE (BOLINHA VERDE + TEXTO) ====== */
+/* ====== CONTADOR ONLINE ====== */
 .online-counter {
     display: inline-flex;
     align-items: center;
@@ -116,12 +116,11 @@ img {
 .online-dot {
     width: 10px;
     height: 10px;
-    background: #2ecc71; /* verde online */
+    background: #2ecc71; 
     border-radius: 50%;
     box-shadow: 0 0 6px rgba(46,204,113,0.35);
 }
 
-/* ====== RESTANTE DO CSS ORIGINAL ====== */
 h1 {
     color: #8b6b4f;
     font-size: 22px;
@@ -174,7 +173,9 @@ a.button::after {
     transform: skewX(-25deg);
     transition: left 0.6s ease;
 }
+
 a.button:hover::after { left: 200%; }
+
 @keyframes bounce { 0%,100% { transform: scale(1);} 50% { transform: scale(1.08);} }
 
 .subproof { color: #6d523d; font-size: 13px; margin-bottom: 12px; opacity: 0.95; }
@@ -220,7 +221,6 @@ a.button:hover::after { left: 200%; }
     <div class="logo-vagas-wrap">
         <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
 
-        <!-- BALÃO CORRIGIDO: usei spans + gap para forçar espaçamento consistente -->
         <div id="vagaBox" class="vagas-balao" aria-live="polite">
             <span class="vaga-text">Restam</span>
             <span id="vagasNum">21</span>
@@ -231,15 +231,12 @@ a.button:hover::after { left: 200%; }
             <span class="online-dot" aria-hidden="true"></span>
             <span id="onlineNum">137</span> pessoas online agora
         </div>
-
     </div>
 
     <h1>GRUPO SECRETO DE OFERTAS</h1>
 
+    <!-- 🔥 NOVO BLOCO LIMPO (sem os textos azuis) -->
     <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
-    <p class="subtitle fade-in">⚠️ <strong>Últimas vagas disponíveis.</strong></p>
-    <p class="subtitle fade-in">Depois que o grupo lotar, o acesso será fechado.</p>
-    <p class="subtitle fade-in">Entre agora e garanta seu lugar antes que acabe.</p>
 
     <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
 
@@ -259,18 +256,16 @@ const vagaBoxEl = document.getElementById('vagaBox');
 let basePopupMin = 6000;
 let basePopupMax = 14000;
 
-/* ===== Conta online (fake) ===== */
 let online = 137;
 const onlineEl = document.getElementById('onlineNum');
 function atualizarOnline() {
-    const variacao = Math.floor(Math.random() * 7) - 3; // -3..+3
+    const variacao = Math.floor(Math.random() * 7) - 3;
     online = Math.max(82, Math.min(220, online + variacao));
     onlineEl.textContent = online;
     setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
 }
 setTimeout(atualizarOnline, 1200);
 
-/* POPUPS e vagas */
 const nomes = [
   "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
   "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo"
