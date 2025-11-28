@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Encantos em Oferta - Grupo Secreto</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
-
-* { box-sizing: border-box; }
-
-html,body{height:100%;}
-
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #d2bba3;
+  :root{
+    --accent-green-1: #00c851;
+    --accent-green-2: #007e33;
+    --card-bg: #f5ede2;
+    --muted: #6d523d;
+    --rounded: 14px;
+    --shadow-1: 0 6px 18px rgba(0,0,0,0.12);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background-color:#d2bba3;
+    /* KEEP: same background image(s) you had - user asked to use same */
     background-image:
       url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
       url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
@@ -23,327 +30,505 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-blend-mode: overlay;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    flex-direction: column;
-}
+    display:flex;
+    justify-content:center;
+    padding:30px;
+    min-height:100vh;
+    flex-direction:column;
+    align-items:center;
+  }
 
-/* ====== CONTAINER ORIGINAL ====== */
-.container {
-    background-color: #f5ede2;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    padding: 40px 30px;
-    text-align: center;
-    max-width: 420px;
-    width: 100%;
-    position: relative;
-}
+  /* ORIGINAL CONTAINER (preserved) */
+  .container{
+    background: var(--card-bg);
+    border-radius:20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding:40px 30px;
+    text-align:center;
+    max-width:420px;
+    width:100%;
+    position:relative;
+  }
 
-/* wrapper para manter logo + vagas + pessoas online centralizados */
-.logo-vagas-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 8px;
-}
+  /* Logo + vagas wrapper (preserved) */
+  .logo-vagas-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    width:100%;
+  }
+  img#logoMain{ width:120px; border-radius:50%; }
 
-/* ====== LOGO ====== */
-img {
-    width: 120px;
-    margin: 0;
-    border-radius: 50%;
-}
-
-/* ====== BALÃO DAS VAGAS ====== */
-.vagas-balao {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; 
-    padding: 8px 16px;
-    border-radius: 14px;
-    font-size: 16px;
-    font-weight: 700;
+  .vagas-balao{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 16px;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:700;
     background: linear-gradient(90deg,#ff6b6b,#ff3b3b);
-    color: #fff;
+    color:#fff;
     box-shadow: 0 6px 18px rgba(255,80,80,0.16);
-    min-width: 140px; 
+    min-width:140px;
     text-align:center;
     animation: pulse 1.8s ease-in-out infinite;
-    transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
-}
+    transition:background 0.25s,box-shadow 0.25s, transform 0.15s;
+  }
+  @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
+  .vagas-balao.urgente{ background: linear-gradient(90deg,#ff3b3b,#d40000); box-shadow:0 8px 26px rgba(212,0,0,0.25); animation: pulseUrg 1.1s infinite;}
+  @keyframes pulseUrg{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
-    100% { transform: scale(1); }
-}
-
-.vagas-balao.urgente {
-    background: linear-gradient(90deg,#ff3b3b,#d40000) !important;
-    box-shadow: 0 8px 26px rgba(212,0,0,0.25) !important;
-    animation: pulseUrg 1.1s ease-in-out infinite !important;
-}
-
-@keyframes pulseUrg {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.12); }
-    100% { transform: scale(1); }
-}
-
-/* ====== CONTADOR ONLINE ====== */
-.online-counter {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #8b6b4f;
+  .online-counter{
+    display:inline-flex;
+    gap:8px;
+    margin-top:4px;
+    font-size:14px;
+    font-weight:600;
+    color:#8b6b4f;
     background: rgba(255,255,255,0.9);
-    padding: 6px 12px;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    white-space: nowrap;
-}
+    padding:6px 12px;
+    border-radius:12px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.06);
+    white-space:nowrap;
+    align-items:center;
+  }
+  .online-dot{ width:10px; height:10px; background:#2ecc71; border-radius:50%; box-shadow: 0 0 6px rgba(46,204,113,0.35) }
 
-.online-dot {
-    width: 10px;
-    height: 10px;
-    background: #2ecc71; 
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(46,204,113,0.35);
-}
+  h1{ color:#8b6b4f; font-size:22px; font-weight:700; margin:12px 0 8px 0; }
+  .subtitle{ color:#8b6b4f; font-size:15px; font-weight:500; line-height:1.6; margin-bottom:12px; }
 
-h1 {
-    color: #8b6b4f;
-    font-size: 22px;
-    font-weight: 700;
-    margin: 12px 0 8px 0;
-}
+  .fade-in{ opacity:0; transform:translateY(15px); animation:fadeInUp 1s ease forwards; }
+  .fade-in:nth-child(1){animation-delay:0.2s} .fade-in:nth-child(2){animation-delay:0.6s} .fade-in:nth-child(3){animation-delay:1s}
+  @keyframes fadeInUp{ to{opacity:1; transform:translateY(0)} }
 
-.subtitle {
-    color: #8b6b4f;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
+  a.button{
+    display:inline-block;
+    background: linear-gradient(90deg,var(--accent-green-1),var(--accent-green-2));
+    color:#fff;
+    padding:14px 25px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:700;
+    position:relative;
+    overflow:hidden;
+    animation:bounce 1.5s infinite ease-in-out;
+    margin:12px 0;
+    box-shadow: 0 6px 18px rgba(0,200,81,0.35);
+  }
+  a.button::after{ content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background: rgba(255,255,255,0.36); transform:skewX(-25deg); transition:left .6s ease; }
+  a.button:hover::after{ left:200% }
+  @keyframes bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 
-.fade-in {
-    opacity: 0;
-    transform: translateY(15px);
-    animation: fadeInUp 1s ease forwards;
-}
+  .subproof{ color:var(--muted); font-size:13px; margin-bottom:12px; opacity:0.95 }
+  .security{ color:var(--muted); font-size:12px; margin-top:12px; display:inline-flex; gap:8px; align-items:center; }
+  .security img{ width:16px; height:16px; }
 
-.fade-in:nth-child(1) { animation-delay: 0.2s; }
-.fade-in:nth-child(2) { animation-delay: 0.6s; }
-.fade-in:nth-child(3) { animation-delay: 1s; }
-.fade-in:nth-child(4) { animation-delay: 1.4s; }
+  /* ---------- NEW: Progress bar (positioned under online counter) ---------- */
+  .vagas-progress-wrap{
+    width:100%;
+    margin:14px 0 6px;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .vagas-info-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .vagas-info-row .vagas-text{ font-weight:700; color:#8b6b4f; display:flex; align-items:center; gap:8px; }
+  .progress-bar{
+    width:100%;
+    background:#e9ecef;
+    height:14px;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .progress-bar > .progress-fill{
+    width:0%;
+    height:100%;
+    background: linear-gradient(90deg,#73e08c,#2ebd59);
+    transition: width 700ms cubic-bezier(.2,.9,.2,1);
+  }
 
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  /* Join list (cards that appear inside the page) */
+  .join-list{ margin-top:12px; display:flex; flex-direction:column; gap:10px; }
+  .join-card{
+    display:flex; align-items:center; justify-content:space-between;
+    background:#fff; padding:14px; border-radius:12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    border:1px solid rgba(0,0,0,0.04);
+    font-weight:600; color:#333;
+  }
+  .join-left{ display:flex; gap:12px; align-items:center; }
+  .join-badge{ width:38px; height:38px; border-radius:10px; background:#e9f8ee; display:flex; align-items:center; justify-content:center; font-weight:700; color:#1a7d3b; box-shadow: 0 2px 8px rgba(0,0,0,0.04) }
+  .join-name{ text-align:left; display:flex; flex-direction:column; align-items:flex-start; }
+  .join-name .n{ font-weight:700; color:#2f3b3b }
+  .join-name .small{ font-weight:600; color:#6f7a80; font-size:13px }
 
-a.button {
-    display: inline-block;
-    background: linear-gradient(90deg, #00c851, #007e33);
-    color: white;
-    padding: 14px 25px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    position: relative;
-    overflow: hidden;
-    animation: bounce 1.5s infinite ease-in-out;
-    margin: 12px 0;
-    box-shadow: 0 6px 18px rgba(0, 200, 81, 0.35);
-}
+  /* ---------- NEW: Features / emojis section ---------- */
+  .features{
+    margin-top:22px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    text-align:left;
+  }
+  .feature-card{
+    display:flex; gap:12px; align-items:center; background:#fff; padding:14px; border-radius:12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.03)
+  }
+  .feature-ico{ width:48px; height:48px; border-radius:12px; background:#ffecec; display:flex; align-items:center; justify-content:center; font-size:20px }
+  .feature-content{ display:flex; flex-direction:column; align-items:flex-start }
+  .feature-title{ font-weight:700; color:#333; }
+  .feature-desc{ color:#6f7a80; font-size:13px }
 
-a.button::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.36);
-    transform: skewX(-25deg);
-    transition: left 0.6s ease;
-}
+  /* ---------- NEW: Offers Recent ---------- */
+  .offers-wrap{ margin-top:22px; background:#fff; border-radius:16px; padding:18px; box-shadow: 0 8px 22px rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.03) }
+  .offers-title{ font-weight:800; font-size:20px; color:#222; text-align:center; margin-bottom:14px }
+  .offer-card{ background:#fff; border-radius:12px; padding:18px; margin-bottom:12px; box-shadow:0 10px 24px rgba(18,20,24,0.03); border:1px solid rgba(0,0,0,0.03) }
+  .tag{ display:inline-block; padding:6px 12px; border-radius:12px; background:#ff6e2e; color:white; font-weight:700; font-size:12px; margin-bottom:8px }
+  .offer-big{ font-size:20px; font-weight:800; color:#d83a2f; margin-bottom:6px }
+  .offer-sub{ color:#6f7a80 }
 
-a.button:hover::after { left: 200%; }
+  /* ---------- FLOATING BOTTOM BAR ---------- */
+  .floating-bar{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    display:flex; align-items:center; justify-content:center;
+    padding:12px 20px; gap:14px;
+    background: rgba(12,12,12,0.95);
+    z-index:9998;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
+  }
+  .floating-left{ color:white; font-weight:800; display:flex; align-items:center; gap:10px; font-size:15px }
+  .floating-btn{
+    background: linear-gradient(90deg,var(--accent-green-1),var(--accent-green-2));
+    color:white; padding:12px 20px; border-radius:10px; font-weight:800; text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,0.25)
+  }
 
-@keyframes bounce { 0%,100% { transform: scale(1);} 50% { transform: scale(1.08);} }
+  /* POPUP (preserved style) */
+  .popup{
+    position:fixed; bottom:20px; right:20px; background:#fff; color: #6d523d;
+    padding:10px 16px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.18);
+    font-size:14px; font-weight:600; opacity:0; transform:translateY(20px); transition:all .45s ease; z-index:9999;
+    border:1px solid rgba(0,0,0,0.04)
+  }
+  .popup.show{ opacity:1; transform:translateY(0) }
+  .popup.hide{ opacity:0; transform:translateY(20px) }
 
-.subproof { color: #6d523d; font-size: 13px; margin-bottom: 12px; opacity: 0.95; }
-
-.security { color: #6d523d; font-size: 12px; margin-top: 12px; display:inline-flex; gap:8px; align-items:center; }
-.security img { width:16px; height:16px; }
-
-/* POPUPS */
-.popup {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffffff;
-    color: #6d523d;
-    padding: 10px 16px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    font-size: 14px;
-    font-weight: 600;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.45s ease;
-    z-index: 9999;
-    border: 1px solid rgba(0,0,0,0.04);
-}
-.popup.show { opacity:1; transform: translateY(0); }
-.popup.hide { opacity:0; transform: translateY(20px); }
-
-@media (max-width:600px){
-    .container { padding:30px 20px; border-radius:15px; }
-    img { width:90px; }
-    h1 { font-size:20px; }
-    .popup { bottom:15px; right:15px; font-size:13px; padding:8px 12px; }
-    .vagas-balao { min-width: 100px; font-size:15px; padding:8px 12px; }
-    .online-counter { font-size:13px; padding:6px 10px; }
-}
+  @media(max-width:600px){
+    .container{ padding:26px 18px; border-radius:15px; }
+    img#logoMain{ width:90px }
+    .floating-left{ font-size:13px }
+  }
 </style>
 </head>
 <body>
 
-<div class="container">
+  <!-- PRESERVE: original container content (unchanged structure) -->
+  <div class="container" id="mainContainer">
 
     <div class="logo-vagas-wrap">
-        <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
+      <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
 
-        <div id="vagaBox" class="vagas-balao" aria-live="polite">
-            <span class="vaga-text">Restam</span>
-            <span id="vagasNum">21</span>
-            <span class="vaga-text">Vagas!</span>
-        </div>
+      <div id="vagaBox" class="vagas-balao" aria-live="polite">
+        <span class="vaga-text">Restam</span>
+        <span id="vagasNum">21</span>
+        <span class="vaga-text">Vagas!</span>
+      </div>
 
-        <div id="onlineCounter" class="online-counter">
-            <span class="online-dot" aria-hidden="true"></span>
-            <span id="onlineNum">137</span> pessoas online agora
-        </div>
+      <div id="onlineCounter" class="online-counter">
+        <span class="online-dot" aria-hidden="true"></span>
+        <span id="onlineNum">137</span> pessoas online agora
+      </div>
+    </div>
+
+    <!-- NEW: Progress bar and info (positioned under online counter, like competitor) -->
+    <div class="vagas-progress-wrap">
+      <div class="vagas-info-row">
+        <div class="vagas-text">⚡ Restam <span id="vagasNumText" style="margin-left:6px"></span></div>
+        <div class="vagas-percent" id="vagasPercent" style="color:#6f7a80; font-weight:700">0%</div>
+      </div>
+      <div class="progress-bar" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
     </div>
 
     <h1>GRUPO SECRETO DE OFERTAS</h1>
 
-    <!-- 🔥 NOVO BLOCO LIMPO (sem os textos azuis) -->
     <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
 
-    <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
+    <a class="button" id="mainCta" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
 
     <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
 
     <div class="security">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
-        <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
+      <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
     </div>
-</div>
 
-<script>
-let vagas = 21;
-const vagaNumEl = document.getElementById('vagasNum');
-const vagaBoxEl = document.getElementById('vagaBox');
+    <!-- NEW: inline join-list (cards that mimic "fulano entrou no grupo" dentro da page) -->
+    <div class="join-list" id="joinList" aria-live="polite" style="margin-top:18px">
+      <!-- initial example items can be inserted by JS -->
+    </div>
 
-let basePopupMin = 6000;
-let basePopupMax = 14000;
+    <!-- NEW: Features section with emojis similar to competitor (text original) -->
+    <div class="features" aria-label="beneficios">
+      <div class="feature-card">
+        <div class="feature-ico">🔥</div>
+        <div class="feature-content">
+          <div class="feature-title">Cupons de até 70% OFF</div>
+          <div class="feature-desc">Descontos reais e atualizados diariamente.</div>
+        </div>
+      </div>
 
-let online = 137;
-const onlineEl = document.getElementById('onlineNum');
-function atualizarOnline() {
-    const variacao = Math.floor(Math.random() * 7) - 3;
-    online = Math.max(82, Math.min(220, online + variacao));
-    onlineEl.textContent = online;
-    setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
-}
-setTimeout(atualizarOnline, 1200);
+      <div class="feature-card">
+        <div class="feature-ico">🎯</div>
+        <div class="feature-content">
+          <div class="feature-title">Exclusivo Shopee</div>
+          <div class="feature-desc">Promoções que só o grupo VIP recebe.</div>
+        </div>
+      </div>
 
-const nomes = [
-  "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
-  "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo"
-];
+      <div class="feature-card">
+        <div class="feature-ico">👀</div>
+        <div class="feature-content">
+          <div class="feature-title">Produtos em alta</div>
+          <div class="feature-desc">Os itens mais desejados do momento.</div>
+        </div>
+      </div>
 
-const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
+      <div class="feature-card">
+        <div class="feature-ico">🛡️</div>
+        <div class="feature-content">
+          <div class="feature-title">Ofertas verificadas</div>
+          <div class="feature-desc">Curadoria para você comprar com segurança.</div>
+        </div>
+      </div>
+    </div>
 
-function atualizaVisualVagas() {
-    if (vagas <= 0) {
-        vagaBoxEl.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
-        return;
-    }
-    vagaNumEl.textContent = vagas;
+    <!-- NEW: Offers recent -->
+    <div class="offers-wrap" aria-label="ofertas-recentes">
+      <div class="offers-title">🛒 Ofertas Recentes da Shopee</div>
 
-    if (vagas <= 5) {
-        vagaBoxEl.classList.add('urgente');
-    } else {
-        vagaBoxEl.classList.remove('urgente');
-    }
-}
+      <div class="offer-card">
+        <div class="tag">SHOPEE</div>
+        <div class="offer-big">70% OFF</div>
+        <div class="offer-sub">Fones Bluetooth</div>
+      </div>
 
-function diminuirVaga() {
-    if (vagas <= 0) return;
-    vagas = Math.max(0, vagas - 1);
-    atualizaVisualVagas();
-}
+      <div class="offer-card">
+        <div class="tag">SHOPEE</div>
+        <div class="offer-big">60% OFF</div>
+        <div class="offer-sub">Smartwatch</div>
+      </div>
 
-function mostrarPopup() {
-    if (vagas <= 0) return;
+      <div class="offer-card">
+        <div class="tag">SHOPEE</div>
+        <div class="offer-big">55% OFF</div>
+        <div class="offer-sub">Maquiagem</div>
+      </div>
 
-    const nome = nomes[Math.floor(Math.random() * nomes.length)];
-    const popup = document.createElement('div');
-    popup.className = 'popup';
-    popup.textContent = `${nome} entrou no grupo.`;
-    document.body.appendChild(popup);
+      <div class="offer-card">
+        <div class="tag">SHOPEE</div>
+        <div class="offer-big">65% OFF</div>
+        <div class="offer-sub">Tênis Esportivo</div>
+      </div>
+    </div>
 
-    setTimeout(()=> popup.classList.add('show'), 10);
+  </div> <!-- /container -->
 
-    audio.currentTime = 0;
+  <!-- FLOATING BAR (same link as main CTA) -->
+  <div class="floating-bar" role="region" aria-label="Ultimas vagas">
+    <div class="floating-left">⚡ <strong>ÚLTIMAS VAGAS</strong></div>
+    <a id="floatingCta" class="floating-btn" href="#" target="_blank" rel="noopener">Entrar no Grupo</a>
+  </div>
+
+  <!-- POPUP template and JS (preserves your existing logic + progress update) -->
+  <script>
+    /*************** Configuration ***************/
+    const INITIAL_VAGAS = 21; // "0% filled represents 21 vagas remaining" per your instruction
+    let vagas = INITIAL_VAGAS;
+    const nomes = [
+      "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
+      "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo",
+      "Mariana","Bruno","Renata","Carlos"
+    ];
+
+    /* elements */
+    const vagasNumEl = document.getElementById('vagasNum');
+    const vagasNumText = document.getElementById('vagasNumText');
+    const vagaBoxEl = document.getElementById('vagaBox');
+    const onlineEl = document.getElementById('onlineNum');
+    const progressFill = document.getElementById('progressFill');
+    const vagasPercent = document.getElementById('vagasPercent');
+    const joinList = document.getElementById('joinList');
+
+    /* sync floating button with main CTA href */
+    const mainCta = document.getElementById('mainCta');
+    const floatingCta = document.getElementById('floatingCta');
+    // set floating link to be same as main CTA
+    floatingCta.href = mainCta.href;
+
+    /* audio for popup (kept low volume) */
+    const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
     audio.volume = 0.12;
-    audio.play().catch(()=>{});
 
-    diminuirVaga();
+    /*************** Online counter (keeps lively) ***************/
+    let online = 137;
+    function atualizarOnline(){
+      const variacao = Math.floor(Math.random() * 7) - 3;
+      online = Math.max(82, Math.min(220, online + variacao));
+      onlineEl.textContent = online;
+      setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
+    }
+    setTimeout(atualizarOnline,1200);
 
-    setTimeout(()=> {
+    /*************** Visual updates for vagas + progress ***************/
+    function atualizarVisualVagas(){
+      if (vagas <= 0){
+        vagasNumEl.textContent = 0;
+        vagasNumText.textContent = "0 vagas";
+        vagaBoxEl.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
+        progressFill.style.width = "100%";
+        vagasPercent.textContent = "100%";
+        vagaBoxEl.classList.add('urgente');
+        return;
+      }
+      vagasNumEl.textContent = vagas;
+      vagasNumText.textContent = vagas + " vagas";
+      if (vagas <= 5) vagaBoxEl.classList.add('urgente'); else vagaBoxEl.classList.remove('urgente');
+
+      // compute fill based on INITIAL_VAGAS: when vagas decreases, fill increases.
+      const filled = ((INITIAL_VAGAS - vagas)/INITIAL_VAGAS) * 100; // 0 when vagas=INITIAL_VAGAS
+      const percentText = Math.round(filled) + "%";
+      progressFill.style.width = Math.max(1, filled) + "%"; // ensure a tiny visible fill initially
+      vagasPercent.textContent = percentText;
+    }
+
+    atualizarVisualVagas();
+
+    /*************** Popups and join-list behavior ***************/
+    function criarJoinCard(nome){
+      const card = document.createElement('div');
+      card.className = 'join-card';
+      const left = document.createElement('div');
+      left.className = 'join-left';
+      const badge = document.createElement('div');
+      badge.className = 'join-badge';
+      badge.textContent = '✓';
+      const nameWrap = document.createElement('div');
+      nameWrap.className = 'join-name';
+      const nameLine = document.createElement('div');
+      nameLine.className = 'n';
+      nameLine.textContent = nome;
+      const small = document.createElement('div');
+      small.className = 'small';
+      small.textContent = 'entrou no grupo agora';
+      nameWrap.appendChild(nameLine);
+      nameWrap.appendChild(small);
+      left.appendChild(badge);
+      left.appendChild(nameWrap);
+      card.appendChild(left);
+      // optional right side (time or icon)
+      const right = document.createElement('div');
+      right.style.color = '#6f7a80';
+      right.style.fontWeight = '700';
+      right.textContent = '';
+      card.appendChild(right);
+
+      return card;
+    }
+
+    function mostrarPopup(nome){
+      const popup = document.createElement('div');
+      popup.className = 'popup';
+      popup.textContent = nome + ' entrou no grupo.';
+      document.body.appendChild(popup);
+      // show
+      setTimeout(()=> popup.classList.add('show'),10);
+
+      audio.currentTime = 0;
+      audio.play().catch(()=>{});
+
+      // also add to join-list at top
+      const card = criarJoinCard(nome);
+      joinList.insertBefore(card, joinList.firstChild);
+
+      // remove after X seconds from page list (keeps list from crescendo too grande)
+      setTimeout(()=> {
+        if (card.parentNode) card.remove();
+      }, 16000);
+
+      // hide popup after some seconds and remove
+      setTimeout(()=>{
         popup.classList.remove('show');
         popup.classList.add('hide');
-        setTimeout(()=> popup.remove(), 420);
-    }, 4600);
-}
-
-function scheduleNextPopup() {
-    if (vagas <= 0) return null;
-
-    let min = basePopupMin;
-    let max = basePopupMax;
-
-    if (vagas <= 4) {
-        min = 18000; max = 26000;
-    } else if (vagas <= 7) {
-        min = 12000; max = 18000;
-    } else if (vagas <= 11) {
-        min = 8000; max = 14000;
+        setTimeout(()=> popup.remove(),420);
+      },4600);
     }
 
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+    function diminuirVaga(){
+      if (vagas <= 0) return;
+      vagas = Math.max(0, vagas - 1);
+      atualizarVisualVagas();
+    }
 
-function startPopups() {
-    if (vagas <= 0) return;
-    mostrarPopup();
-    const intervalo = scheduleNextPopup();
-    setTimeout(startPopups, intervalo);
-}
+    /* When a popup occurs: play sound, show popup, add join-card and decrement vagas and update progress */
+    function dispararEventoEntrada(){
+      if (vagas <= 0) return;
+      const nome = nomes[Math.floor(Math.random()*nomes.length)];
+      mostrarPopup(nome);
+      diminuirVaga();
+    }
 
-atualizaVisualVagas();
-setTimeout(startPopups, 5000);
-</script>
+    /*************** Popup scheduling logic (tuned by vagas) ***************/
+    let basePopupMin = 6000;
+    let basePopupMax = 14000;
 
+    function scheduleNextPopup(){
+      if (vagas <= 0) return null;
+      let min = basePopupMin;
+      let max = basePopupMax;
+      if (vagas <= 4){ min = 18000; max = 26000; }
+      else if (vagas <= 7){ min = 12000; max = 18000; }
+      else if (vagas <= 11){ min = 8000; max = 14000; }
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function startPopups(){
+      if (vagas <= 0) return;
+      dispararEventoEntrada();
+      const intervalo = scheduleNextPopup();
+      if (intervalo) setTimeout(startPopups, intervalo);
+    }
+
+    // start after small delay so initial UI renders
+    setTimeout(startPopups, 5000);
+
+    /*************** Optional: expose a manual trigger in console for testing ***************/
+    window._dispararEntrada = function(){ dispararEventoEntrada(); };
+    window._setVagas = function(n){ vagas = n; atualizarVisualVagas(); };
+
+    /*************** Ensure floating CTA link follows main CTA if main changes dynamically ***************/
+    const observer = new MutationObserver(()=> floatingCta.href = mainCta.href );
+    observer.observe(mainCta, { attributes: true, attributeFilter: ['href'] });
+
+    /*************** Insert a few initial join cards (non-copyrighted placeholder names) ***************/
+    (function seedJoinList(){
+      const starter = ["Mariana S.","Bruno M.","Renata A."];
+      starter.forEach((n,i)=>{
+        const c = criarJoinCard(n);
+        joinList.appendChild(c);
+      });
+    })();
+
+  </script>
 </body>
 </html>
