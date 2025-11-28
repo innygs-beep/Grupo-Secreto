@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
@@ -9,10 +9,28 @@
 
 * { box-sizing: border-box; }
 
-html,body{height:100%;}
+html,body{height:100%; margin:0; padding:0;}
 
+/* ===== BARRA DE PROGRESSO DO TOPO ===== */
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(0,0,0,0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: #00c851; /* verde forte */
+    transition: width 0.4s ease;
+}
+
+/* ======= BACKGROUND E LAYOUT ORIGINAL ======= */
 body {
-    margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: #d2bba3;
     background-image:
@@ -25,9 +43,9 @@ body {
     background-blend-mode: overlay;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* allow long scrolling */
+    align-items: center;
     min-height: 100vh;
-    padding: 40px 20px; /* more top padding to mirror printed style */
+    padding: 20px;
     flex-direction: column;
 }
 
@@ -41,16 +59,12 @@ body {
     max-width: 420px;
     width: 100%;
     position: relative;
-    margin-bottom: 30px; /* space for next sections */
 }
 
-/* wrapper para manter logo + vagas + pessoas online centralizados */
 .logo-vagas-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
     gap: 8px;
 }
 
@@ -65,8 +79,7 @@ img {
 .vagas-balao {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px; 
+    gap: 8px;
     padding: 8px 16px;
     border-radius: 14px;
     font-size: 16px;
@@ -74,17 +87,11 @@ img {
     background: linear-gradient(90deg,#ff6b6b,#ff3b3b);
     color: #fff;
     box-shadow: 0 6px 18px rgba(255,80,80,0.16);
-    min-width: 140px; 
-    text-align:center;
     animation: pulse 1.8s ease-in-out infinite;
-    transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
+    min-width: 140px;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
-    100% { transform: scale(1); }
-}
+@keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.04);}100%{transform:scale(1);} }
 
 .vagas-balao.urgente {
     background: linear-gradient(90deg,#ff3b3b,#d40000) !important;
@@ -92,11 +99,7 @@ img {
     animation: pulseUrg 1.1s ease-in-out infinite !important;
 }
 
-@keyframes pulseUrg {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.12); }
-    100% { transform: scale(1); }
-}
+@keyframes pulseUrg {0%{transform:scale(1);}50%{transform:scale(1.12);}100%{transform:scale(1);} }
 
 /* ====== CONTADOR ONLINE ====== */
 .online-counter {
@@ -110,14 +113,12 @@ img {
     background: rgba(255,255,255,0.9);
     padding: 6px 12px;
     border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    white-space: nowrap;
 }
 
 .online-dot {
     width: 10px;
     height: 10px;
-    background: #2ecc71; 
+    background: #2ecc71;
     border-radius: 50%;
     box-shadow: 0 0 6px rgba(46,204,113,0.35);
 }
@@ -132,7 +133,6 @@ h1 {
 .subtitle {
     color: #8b6b4f;
     font-size: 15px;
-    font-weight: 500;
     line-height: 1.6;
     margin-bottom: 12px;
 }
@@ -143,12 +143,11 @@ h1 {
     animation: fadeInUp 1s ease forwards;
 }
 
-.fade-in:nth-child(1) { animation-delay: 0.2s; }
-.fade-in:nth-child(2) { animation-delay: 0.6s; }
-.fade-in:nth-child(3) { animation-delay: 1s; }
-.fade-in:nth-child(4) { animation-delay: 1.4s; }
+.fade-in:nth-child(1){animation-delay:0.2s;}
+.fade-in:nth-child(2){animation-delay:0.6s;}
+.fade-in:nth-child(3){animation-delay:1s;}
 
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp {to{opacity:1; transform: translateY(0);} }
 
 a.button {
     display: inline-block;
@@ -158,36 +157,21 @@ a.button {
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
-    position: relative;
-    overflow: hidden;
-    animation: bounce 1.5s infinite ease-in-out;
     margin: 12px 0;
+    animation: bounce 1.5s infinite ease-in-out;
     box-shadow: 0 6px 18px rgba(0, 200, 81, 0.35);
 }
 
-a.button::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.36);
-    transform: skewX(-25deg);
-    transition: left 0.6s ease;
-}
+@keyframes bounce {0%,100%{transform:scale(1);}50%{transform:scale(1.08);} }
 
-a.button:hover::after { left: 200%; }
-
-@keyframes bounce { 0%,100% { transform: scale(1);} 50% { transform: scale(1.08);} }
-
-.subproof { color: #6d523d; font-size: 13px; margin-bottom: 12px; opacity: 0.95; }
-
-.security { color: #6d523d; font-size: 12px; margin-top: 12px; display:inline-flex; gap:8px; align-items:center; }
+.subproof { color:#6d523d; font-size:13px; margin-bottom:12px; }
+.security { color:#6d523d; font-size:12px; margin-top:12px; display:flex; gap:8px; align-items:center; }
 .security img { width:16px; height:16px; }
 
-/* POPUPS */
+/* ===== POPUPS ===== */
 .popup {
     position: fixed;
-    bottom: 80px; /* lifted to avoid overlap with bottom floating bar */
+    bottom: 20px;
     right: 20px;
     background-color: #ffffff;
     color: #6d523d;
@@ -200,485 +184,147 @@ a.button:hover::after { left: 200%; }
     transform: translateY(20px);
     transition: all 0.45s ease;
     z-index: 9999;
-    border: 1px solid rgba(0,0,0,0.04);
 }
 .popup.show { opacity:1; transform: translateY(0); }
 .popup.hide { opacity:0; transform: translateY(20px); }
 
-/* ====== NOVOS ESTILOS: BARRA DE PROGRESSO, PROVAS, CARDS, FOOTER FIXO ====== */
-
-/* progress bar wrap inside container */
-.progress-wrap {
-    width: 100%;
-    margin: 16px 0 6px 0;
-    text-align: left;
+@media (max-width:600px){
+    .container { padding:30px 20px; border-radius:15px; }
+    img { width:90px; }
 }
 
-/* progress track */
-.progress-track {
-    background: rgba(0,0,0,0.06);
-    height: 14px;
-    border-radius: 20px;
-    padding: 3px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
-}
-
-/* progress fill (grows as people enter) */
-.progress-fill {
-    height: 100%;
-    width: 8%; /* initial small fill */
-    background: linear-gradient(90deg, #5fe27d, #28b14a);
-    border-radius: 18px;
-    transition: width 800ms cubic-bezier(.2,.9,.2,1);
-}
-
-/* extra content below container to make page long */
-.extra-content {
-    max-width: 720px;
-    width: 100%;
-    margin: 0 auto 80px auto;
-    padding: 0 20px;
-}
-
-/* testimonial card */
-.testimonial {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 26px;
-    margin: 16px 0;
-    box-shadow: 0 8px 28px rgba(20,20,20,0.04);
-    font-style: italic;
-    color: #344046;
-    text-align: center;
-}
-
-/* testimonial author */
-.testimonial .author {
-    display:block;
-    margin-top:12px;
-    font-style: normal;
-    font-weight:700;
-    color: #2f3b47;
-}
-
-/* feature list cards (icons + title + subtitle) */
-.features {
-    margin: 18px 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-}
-
-.feature-card {
-    display:flex;
-    gap: 14px;
-    align-items: center;
-    background: #fff;
-    border-radius: 14px;
-    padding: 16px;
-    box-shadow: 0 8px 24px rgba(20,20,20,0.03);
-}
-
-/* icon capsule */
-.feature-card .icon {
-    width:52px;
-    height:52px;
-    border-radius: 12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background: #fdeeee;
-    font-size:22px;
-}
-
-/* feature text */
-.feature-card .ftitle {
-    font-weight:700;
-    color:#1e2b2b;
-    margin-bottom:4px;
-}
-.feature-card .fsub {
-    color:#6b7780;
-    font-size:14px;
-}
-
-/* offers recent section */
-.offers-section {
-    margin: 20px 0 70px;
-    padding: 22px;
-    background:#fff;
-    border-radius:18px;
-    box-shadow: 0 8px 38px rgba(20,20,20,0.03);
-}
-.offers-section h2 {
-    text-align:center;
-    margin: 0 0 18px 0;
-}
-
-/* offer cards */
-.offer-card {
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    margin:14px 0;
-    box-shadow: 0 10px 30px rgba(20,20,20,0.03);
-    text-align:center;
-}
-.offer-badge {
-    display:inline-block;
-    background:#ff6a00;
-    color:white;
-    padding:8px 12px;
-    border-radius: 14px;
-    font-weight:700;
-    font-size:12px;
-    margin-bottom:10px;
-}
-.offer-off {
-    color:#d93a34;
-    font-weight:800;
-    font-size:20px;
-    margin-bottom:8px;
-}
-.offer-desc { color:#6b7780; }
-
-/* bottom floating bar (fixed) */
-.btn-flutuante-container {
-    position: fixed;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #0b0b0b; /* preto */
-    padding: 12px 18px;
-    border-radius: 10px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    z-index: 10000;
-    box-shadow: 0 8px 36px rgba(0,0,0,0.45);
-    max-width: 760px;
-    width: calc(100% - 40px);
-    justify-content: center;
-}
-
-/* small label */
-.btn-info {
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-/* botão verde na direita */
-.btn-entrar-grupo {
-    background: linear-gradient(90deg, #00c851, #007e33);
-    padding: 10px 18px;
-    border-radius: 8px;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: 0.15s;
-    box-shadow: 0 8px 22px rgba(0,200,81,0.22);
-}
-
-/* responsive tweaks */
-@media (max-width:760px){
-    .extra-content { padding: 0 14px; }
-    .btn-flutuante-container { width: calc(100% - 28px); }
-    .feature-card { padding:12px; }
-    .feature-card .icon { width:46px; height:46px; font-size:20px; border-radius:10px; }
-}
 </style>
 </head>
 <body>
 
-<!-- ORIGINAL CONTAINER (preservado) -->
+<!-- ===== BARRA DE PROGRESSO TOPO ===== -->
+<div class="progress-bar-container">
+    <div id="progressFill" class="progress-bar-fill"></div>
+</div>
+
 <div class="container">
 
     <div class="logo-vagas-wrap">
         <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
 
-        <div id="vagaBox" class="vagas-balao" aria-live="polite">
-            <span class="vaga-text">Restam</span>
+        <div id="vagaBox" class="vagas-balao">
+            <span>Restam</span>
             <span id="vagasNum">21</span>
-            <span class="vaga-text">Vagas!</span>
+            <span>Vagas!</span>
         </div>
 
         <div id="onlineCounter" class="online-counter">
-            <span class="online-dot" aria-hidden="true"></span>
+            <span class="online-dot"></span>
             <span id="onlineNum">137</span> pessoas online agora
         </div>
     </div>
 
     <h1>GRUPO SECRETO DE OFERTAS</h1>
 
-    <!-- mantenho seu texto limpo -->
-    <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
+    <p class="subtitle fade-in">
+        Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.
+    </p>
 
-    <!-- ===== BARRA DE PROGRESSO (NOVO) ===== -->
-    <div class="progress-wrap" aria-hidden="false">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-            <div style="font-weight:700; color:#6b6b6b;">Progresso de adesões</div>
-            <div id="progressLabel" style="font-weight:700; color:#6b6b6b;">0%</div>
-        </div>
-        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="8">
-            <div class="progress-fill" id="progressFill" style="width:8%"></div>
-        </div>
-    </div>
-
-    <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
+    <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank">Acessar as Ofertas Agora!</a>
 
     <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
 
     <div class="security">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg">
         <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
     </div>
 </div>
 
-<!-- ================= EXTRA CONTENT (makes page long) ================= -->
-<div class="extra-content">
-
-    <!-- TESTIMONIAL (estilo do concorrente, adaptado ao Encantos em Ofertas) -->
-    <div class="testimonial">
-        "Comprei um fone de R$200 por R$79 com as promoções do Encantos em Ofertas! 🎧"
-        <span class="author">- Carlos M.</span>
-    </div>
-
-    <!-- FEATURES list (icons + titles + subtitles) -->
-    <div class="features">
-        <div class="feature-card">
-            <div class="icon">🔥</div>
-            <div>
-                <div class="ftitle">Cupons de até 70% OFF</div>
-                <div class="fsub">Descontos reais e atualizados diariamente.</div>
-            </div>
-        </div>
-
-        <div class="feature-card">
-            <div class="icon">🎯</div>
-            <div>
-                <div class="ftitle">Exclusivo Shopee</div>
-                <div class="fsub">Promoções que só o grupo VIP recebe.</div>
-            </div>
-        </div>
-
-        <div class="feature-card">
-            <div class="icon">👀</div>
-            <div>
-                <div class="ftitle">Produtos em alta</div>
-                <div class="fsub">Os itens mais desejados do momento.</div>
-            </div>
-        </div>
-
-        <div class="feature-card">
-            <div class="icon">🛡️</div>
-            <div>
-                <div class="ftitle">Ofertas verificadas</div>
-                <div class="fsub">Curadoria para você comprar com segurança.</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- OFFERS RECENTES -->
-    <div class="offers-section">
-        <h2>🛒 Ofertas Recentes da Shopee</h2>
-
-        <div class="offer-card">
-            <div class="offer-badge">SHOPEE</div>
-            <div class="offer-off">70% OFF</div>
-            <div class="offer-desc">Fones Bluetooth</div>
-        </div>
-
-        <div class="offer-card">
-            <div class="offer-badge">SHOPEE</div>
-            <div class="offer-off">60% OFF</div>
-            <div class="offer-desc">Smartwatch</div>
-        </div>
-
-        <div class="offer-card">
-            <div class="offer-badge">SHOPEE</div>
-            <div class="offer-off">55% OFF</div>
-            <div class="offer-desc">Maquiagem</div>
-        </div>
-
-        <div class="offer-card">
-            <div class="offer-badge">SHOPEE</div>
-            <div class="offer-off">65% OFF</div>
-            <div class="offer-desc">Tênis Esportivo</div>
-        </div>
-    </div>
-
-    <!-- small footer note area to mimic long page -->
-    <div style="text-align:center; color:#6b6b6b; margin-bottom:120px;">
-        Vagas limitadas • Apenas para promoções Shopee e parceiros.
-    </div>
-
-</div>
-
-<!-- ================= BOTÃO FIXO NO RODAPÉ ================= -->
-<div class="btn-flutuante-container" aria-hidden="false">
-    <div class="btn-info">⚡ <span style="margin-left:6px;">ÚLTIMAS VAGAS</span></div>
-    <a id="fixedJoinBtn" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" class="btn-entrar-grupo">Entrar no Grupo</a>
-</div>
-
+<!-- ========================= SCRIPT ============================= -->
 <script>
-/* ---------- Dados iniciais ---------- */
-/* totalVagas define capacidade total do grupo (quando fill = 100% => lotado) */
-let totalVagas = 21;         // você pode ajustar este número
-let vagas = totalVagas;      // vagas restantes (diminui conforme pessoas "entram")
+let vagas = 21;
+const totalVagas = 21;
+
 const vagaNumEl = document.getElementById('vagasNum');
 const vagaBoxEl = document.getElementById('vagaBox');
 
-const progressFillEl = document.getElementById('progressFill');
-const progressLabelEl = document.getElementById('progressLabel');
+const progressFill = document.getElementById('progressFill');
 
-/* Popup timing base */
-let basePopupMin = 4000;  // mínimo 4s
-let basePopupMax = 12000; // máximo 12s
+function atualizarBarra() {
+    const porcentagem = ((totalVagas - vagas) / totalVagas) * 100;
+    progressFill.style.width = porcentagem + "%";
+}
 
-/* online fake counter */
+function atualizaVisualVagas() {
+    vagaNumEl.textContent = vagas;
+
+    if (vagas <= 5) vagaBoxEl.classList.add("urgente");
+    else vagaBoxEl.classList.remove("urgente");
+}
+
+function diminuirVaga() {
+    if (vagas <= 0) return;
+    vagas--;
+    atualizaVisualVagas();
+    atualizarBarra();
+}
+
+/* ==== ONLINE ==== */
 let online = 137;
 const onlineEl = document.getElementById('onlineNum');
+
 function atualizarOnline() {
-    const variacao = Math.floor(Math.random() * 7) - 3; // -3..+3
+    const variacao = Math.floor(Math.random() * 7) - 3;
     online = Math.max(82, Math.min(220, online + variacao));
     onlineEl.textContent = online;
-    setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
+    setTimeout(atualizarOnline, Math.random()*5000 + 3000);
 }
 setTimeout(atualizarOnline, 1200);
 
-/* lista de nomes para popups */
+/* ==== POP-UPS ==== */
 const nomes = [
-  "Maria Eduarda","Bruno Mendes","Renata Alves","Ana","Lucas","Fernanda",
-  "João Gabriel","Pedro Henrique","Isabela","Rafael","Larissa","Gabriel",
-  "Camila","Matheus","Luana","Caio","Bianca","Eduardo"
+  "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
+  "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo"
 ];
 
-/* som de notificação (opcional) */
 const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
-/* ---------- Atualiza visual do contador e da barra (preenchimento cresce) ---------- */
-function atualizaVisualVagas() {
-    // Se lotado
-    if (vagas <= 0) {
-        vagaBoxEl.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
-        // set progress to 100%
-        setProgressPercent(100);
-        return;
-    }
-    // atualiza contador numérico
-    vagaNumEl.textContent = vagas;
-
-    // se poucas vagas restantes aplica estilo urgente
-    if (vagas <= 5) {
-        vagaBoxEl.classList.add('urgente');
-    } else {
-        vagaBoxEl.classList.remove('urgente');
-    }
-
-    // atualiza progress bar (preenchimento cresce quando pessoas entram)
-    const filled = totalVagas - vagas;
-    const percent = Math.round((filled / totalVagas) * 100);
-    setProgressPercent(percent);
-}
-
-/* set progress bar width and aria label */
-function setProgressPercent(percent) {
-    progressFillEl.style.width = percent + '%';
-    progressLabelEl.textContent = percent + '%';
-    // update aria
-    const track = document.querySelector('.progress-track');
-    if (track) track.setAttribute('aria-valuenow', percent);
-}
-
-/* ---------- a cada popup chamamos esta função: uma pessoa "entrou" ---------- */
-function pessoaEntrou() {
-    if (vagas <= 0) return;
-    // diminuir vagas
-    vagas = Math.max(0, vagas - 1);
-    atualizaVisualVagas();
-}
-
-/* ---------- Mostrar popup (com som e animação) ---------- */
-function mostrarPopup(nome) {
+function mostrarPopup() {
     if (vagas <= 0) return;
 
-    const popup = document.createElement('div');
-    popup.className = 'popup';
+    const nome = nomes[Math.floor(Math.random()*nomes.length)];
+    const popup = document.createElement("div");
+    popup.className = "popup";
     popup.textContent = `${nome} entrou no grupo.`;
+
     document.body.appendChild(popup);
+    setTimeout(() => popup.classList.add("show"), 10);
 
-    // show
-    setTimeout(()=> popup.classList.add('show'), 10);
-
-    // play sound if allowed
     audio.currentTime = 0;
     audio.volume = 0.12;
     audio.play().catch(()=>{});
 
-    // sincroniza: decrementa vagas e atualiza progress
-    pessoaEntrou();
+    diminuirVaga();
 
-    // hide after 4.6s
-    setTimeout(()=> {
-        popup.classList.remove('show');
-        popup.classList.add('hide');
-        setTimeout(()=> popup.remove(), 420);
+    setTimeout(() => {
+        popup.classList.remove("show");
+        popup.classList.add("hide");
+        setTimeout(() => popup.remove(), 420);
     }, 4600);
 }
 
-/* ---------- scheduling random popups between basePopupMin and basePopupMax ---------- */
-function scheduleNextPopup() {
-    if (vagas <= 0) return null;
-    return Math.floor(Math.random() * (basePopupMax - basePopupMin + 1)) + basePopupMin;
+function intervaloProximoPopup() {
+    if (vagas <= 4) return Math.random()*8000 + 18000;
+    if (vagas <= 7) return Math.random()*6000 + 12000;
+    if (vagas <= 11) return Math.random()*6000 + 8000;
+    return Math.random()*8000 + 6000;
 }
 
-/* ---------- inicia popups em loop (não bloqueante) ---------- */
-function startPopups() {
+function iniciarPopups() {
     if (vagas <= 0) return;
-    // choose a random name
-    const nome = nomes[Math.floor(Math.random() * nomes.length)];
-    mostrarPopup(nome);
-
-    // schedule next
-    const intervalo = scheduleNextPopup();
-    setTimeout(startPopups, intervalo);
+    mostrarPopup();
+    setTimeout(iniciarPopups, intervaloProximoPopup());
 }
 
-/* ---------- Inicialização ---------- */
-vagas = totalVagas; // reset
 atualizaVisualVagas();
-setTimeout(startPopups, 2500); // inicia após 2.5s
+atualizarBarra();
+setTimeout(iniciarPopups, 5000);
 
-/* ---------- opcional: quando o usuário clicar no botão fixo, anima o botão etc ---------- */
-const fixedBtn = document.getElementById('fixedJoinBtn');
-if (fixedBtn) {
-    fixedBtn.addEventListener('click', () => {
-        // efeito visual sutil, sem alterar funcionamento
-        fixedBtn.style.transform = "translateY(-2px)";
-        setTimeout(()=> fixedBtn.style.transform = "", 150);
-    });
-}
-
-/* ---------- Exposure: função para ajustar velocidade/popups externamente (se quiser) ---------- */
-window.encantos = {
-    setTotalVagas: function(n){
-        totalVagas = Math.max(1,Math.floor(n));
-        // recompute percent and UI
-        atualizaVisualVagas();
-    },
-    setPopupIntervalRange: function(minMs, maxMs){
-        basePopupMin = Math.max(800, minMs);
-        basePopupMax = Math.max(basePopupMin + 200, maxMs);
-    },
-    triggerPopupNow: function(name){
-        mostrarPopup(name || (nomes[Math.floor(Math.random()*nomes.length)]));
-    }
-};
 </script>
 
 </body>
