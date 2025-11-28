@@ -21,11 +21,13 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-blend-mode: overlay;
+
+    /* IMPORTANT FIX: align to top so the original top block is visible on load */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* changed from center to flex-start */
+    padding: 20px 20px 80px; /* extra bottom padding for floating bar */
     min-height: 100vh;
-    padding: 20px;
     flex-direction: column;
 }
 
@@ -39,6 +41,7 @@ body {
     max-width: 420px;
     width: 100%;
     position: relative;
+    /* ensure the original stays at natural flow top */
 }
 
 /* wrapper para manter logo + vagas + pessoas online centralizados */
@@ -114,7 +117,6 @@ a.button:hover::after { left: 200%; }
 }
 
 /* ======================== ADDED (from a) ======================== */
-/* Use slightly different class names to avoid conflicts and keep original visually identical */
 :root{
   --accent-green-1: #00c851;
   --accent-green-2: #007e33;
@@ -122,7 +124,7 @@ a.button:hover::after { left: 200%; }
   --muted: #6d523d;
 }
 
-/* Container for additional continued content - matches original visual */
+/* Continuation container placed below original (keeps same visual) */
 .container--continued {
     background: var(--card-bg);
     border-radius:20px;
@@ -132,7 +134,7 @@ a.button:hover::after { left: 200%; }
     max-width:420px;
     width:100%;
     position:relative;
-    margin-top:22px;
+    margin-top:18px;
 }
 
 /* Progress bar */
