@@ -4,34 +4,55 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Encantos em Oferta - Grupo Secreto</title>
+
+<!-- Fonte Poppins -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-/* ======================== BASE (original b) ======================== */
+/* ========== GLOBAL ========== */
+:root{
+  --accent-green-1: #00c851;
+  --accent-green-2: #007e33;
+  --card-bg: #f5ede2;
+  --muted: #6d523d;
+  --rounded: 14px;
+}
 * { box-sizing: border-box; }
-html,body{height:100%;}
+html,body{ height:100%; }
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: #d2bba3;
-    background-image: url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
-                      url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
-                      url('https://images.unsplash.com/photo-1580894740849-6119a80c1f49?auto=format&fit=crop&w=1400&q=60');
+    background-image:
+      url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
+      url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
+      url('https://images.unsplash.com/photo-1580894740849-6119a80c1f49?auto=format&fit=crop&w=1400&q=60');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-blend-mode: overlay;
 
-    /* IMPORTANT FIX: align to top so the original top block is visible on load */
+    /* CRUCIAL: keep content aligned to top so the original (B) is visible and not cut */
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* changed from center to flex-start */
-    padding: 20px 20px 80px; /* extra bottom padding for floating bar */
+    align-items: flex-start; /* was center before -> caused vertical centering/cut */
+    padding: 28px 20px 120px; /* bottom padding for floating bar */
     min-height: 100vh;
     flex-direction: column;
 }
 
-/* ====== CONTAINER ORIGINAL ====== */
+/* Center column wrapper so content isn't full-width on very wide screens */
+.page-wrapper {
+  width: 100%;
+  max-width: 900px; /* keeps both columns comfortable; each card has max-width itself */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ========== LP B (ORIGINAL TOP) ========== */
 .container {
     background-color: #f5ede2;
     border-radius: 20px;
@@ -41,7 +62,6 @@ body {
     max-width: 420px;
     width: 100%;
     position: relative;
-    /* ensure the original stays at natural flow top */
 }
 
 /* wrapper para manter logo + vagas + pessoas online centralizados */
@@ -55,7 +75,7 @@ body {
 }
 
 /* ====== LOGO ====== */
-img { width: 120px; margin: 0; border-radius: 50%; }
+img#logoMain { width: 120px; margin: 0; border-radius: 50%; }
 
 /* ====== BALÃO DAS VAGAS ====== */
 .vagas-balao {
@@ -103,26 +123,11 @@ a.button:hover::after { left: 200%; }
 .security img { width:16px; height:16px; }
 
 /* POPUPS (base style) */
-.popup { position: fixed; bottom: 20px; right: 20px; background-color: #ffffff; color: #6d523d; padding: 10px 16px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); font-size: 14px; font-weight: 600; opacity: 0; transform: translateY(20px); transition: all 0.45s ease; z-index: 9999; border: 1px solid rgba(0,0,0,0.04); }
+.popup { position: fixed; bottom: 20px; right: 20px; background-color: #ffffff; color: #6d523d; padding: 10px 16px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); font-size: 14px; font-weight: 600; opacity: 0; transform: translateY(20px); transition: all 0.45s ease; z-index: 99999; border: 1px solid rgba(0,0,0,0.04); }
 .popup.show { opacity:1; transform: translateY(0); }
 .popup.hide { opacity:0; transform: translateY(20px); }
 
-@media (max-width:600px){
-    .container { padding:30px 20px; border-radius:15px; }
-    img { width:90px; }
-    h1 { font-size:20px; }
-    .popup { bottom:15px; right:15px; font-size:13px; padding:8px 12px; }
-    .vagas-balao { min-width: 100px; font-size:15px; padding:8px 12px; }
-    .online-counter { font-size:13px; padding:6px 10px; }
-}
-
-/* ======================== ADDED (from a) ======================== */
-:root{
-  --accent-green-1: #00c851;
-  --accent-green-2: #007e33;
-  --card-bg: #f5ede2;
-  --muted: #6d523d;
-}
+/* ========== LP A (CONTINUATION) ========== */
 
 /* Continuation container placed below original (keeps same visual) */
 .container--continued {
@@ -134,7 +139,7 @@ a.button:hover::after { left: 200%; }
     max-width:420px;
     width:100%;
     position:relative;
-    margin-top:18px;
+    margin-top:8px;
 }
 
 /* Progress bar */
@@ -189,333 +194,340 @@ a.button:hover::after { left: 200%; }
     display:flex; align-items:center; justify-content:center;
     padding:12px 20px; gap:14px;
     background: rgba(12,12,12,0.95);
-    z-index:9998;
+    z-index:99998;
     box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
 }
 .floating-left{ color:white; font-weight:800; display:flex; align-items:center; gap:10px; font-size:15px }
 .floating-btn{ background: linear-gradient(90deg,var(--accent-green-1),var(--accent-green-2)); color:white; padding:12px 20px; border-radius:10px; font-weight:800; text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,0.25) }
 
-/* Keep popups on top */
-.popup { z-index: 99999; }
+/* keep popup on top */
+.popup { z-index: 100000; }
+
+@media (max-width: 600px) {
+  body { padding-bottom: 160px; } /* ensure floating bar doesn't overlap content on small screens */
+  .page-wrapper { padding: 0 12px; }
+  .container, .container--continued { max-width: 100%; padding: 26px 18px; border-radius: 15px; }
+  img#logoMain { width: 90px; }
+  h1 { font-size: 20px; }
+}
 </style>
 </head>
 <body>
 
-  <!-- ====================== TOP: ORIGINAL (b) - PRESERVED INTACT ====================== -->
-  <div class="container" id="originalTop">
-    <div class="logo-vagas-wrap">
-      <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
-      <div id="vagaBox" class="vagas-balao" aria-live="polite">
-        <span class="vaga-text">Restam</span>
-        <span id="vagasNum">21</span>
-        <span class="vaga-text">Vagas!</span>
-      </div>
+  <div class="page-wrapper">
 
-      <div id="onlineCounter" class="online-counter">
-        <span class="online-dot" aria-hidden="true"></span>
-        <span id="onlineNum">137</span> pessoas online agora
-      </div>
-    </div>
+    <!-- ========== LP B (ORIGINAL TOP) - PRESERVED INTACT ========== -->
+    <div class="container" id="lpB_top">
+      <div class="logo-vagas-wrap">
+        <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
+        <div id="vagaBox" class="vagas-balao" aria-live="polite">
+          <span class="vaga-text">Restam</span>
+          <span id="vagasNum">21</span>
+          <span class="vaga-text">Vagas!</span>
+        </div>
 
-    <h1>GRUPO SECRETO DE OFERTAS</h1>
-
-    <!-- 🔥 NOVO BLOCO LIMPO (sem os textos azuis) -->
-    <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
-
-    <!-- NOTE: we keep the original anchor markup; JS will find it via selector -->
-    <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
-
-    <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
-
-    <div class="security">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
-      <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
-    </div>
-  </div>
-  <!-- /original top -->
-
-  <!-- ====================== CONTINUATION: (a) ADDED BELOW (rolável) ====================== -->
-  <div class="container--continued" id="continuationA">
-
-    <!-- Progress bar and info (from a) -->
-    <div class="vagas-progress-wrap">
-      <div class="vagas-info-row">
-        <div class="vagas-text">⚡ Restam <span id="vagasNumText" style="margin-left:6px"></span></div>
-        <div class="vagas-percent" id="vagasPercent" style="color:#6f7a80; font-weight:700">0%</div>
-      </div>
-      <div class="progress-bar" aria-hidden="true">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-    </div>
-
-    <h1 style="margin-top:10px">CONTINUAÇÃO — OFERTAS & PROVAS</h1>
-
-    <!-- inline join-list (cards that mimic "fulano entrou no grupo" inside the page) -->
-    <div class="join-list" id="joinList" aria-live="polite" style="margin-top:12px">
-      <!-- will be filled by JS -->
-    </div>
-
-    <!-- Features section with emojis -->
-    <div class="features" aria-label="beneficios">
-      <div class="feature-card">
-        <div class="feature-ico">🔥</div>
-        <div class="feature-content">
-          <div class="feature-title">Cupons de até 70% OFF</div>
-          <div class="feature-desc">Descontos reais e atualizados diariamente.</div>
+        <div id="onlineCounter" class="online-counter">
+          <span class="online-dot" aria-hidden="true"></span>
+          <span id="onlineNum">137</span> pessoas online agora
         </div>
       </div>
 
-      <div class="feature-card">
-        <div class="feature-ico">🎯</div>
-        <div class="feature-content">
-          <div class="feature-title">Exclusivo Shopee</div>
-          <div class="feature-desc">Promoções que só o grupo VIP recebe.</div>
-        </div>
-      </div>
+      <h1>GRUPO SECRETO DE OFERTAS</h1>
 
-      <div class="feature-card">
-        <div class="feature-ico">👀</div>
-        <div class="feature-content">
-          <div class="feature-title">Produtos em alta</div>
-          <div class="feature-desc">Os itens mais desejados do momento.</div>
-        </div>
-      </div>
+      <!-- 🔥 NOVO BLOCO LIMPO (sem os textos azuis) -->
+      <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
 
-      <div class="feature-card">
-        <div class="feature-ico">🛡️</div>
-        <div class="feature-content">
-          <div class="feature-title">Ofertas verificadas</div>
-          <div class="feature-desc">Curadoria para você comprar com segurança.</div>
-        </div>
+      <!-- main CTA (kept same visual & original href) -->
+      <a id="mainCta" class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
+
+      <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
+
+      <div class="security">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
+        <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
       </div>
     </div>
+    <!-- /LP B top -->
 
-    <!-- Offers recent -->
-    <div class="offers-wrap" aria-label="ofertas-recentes" style="margin-top:18px;">
-      <div class="offers-title">🛒 Ofertas Recentes da Shopee</div>
+    <!-- ========== LP A (CONTINUATION) - ADDED BELOW, ROLÁVEL ========== -->
+    <div class="container--continued" id="lpA_continuation">
 
-      <div class="offer-card">
-        <div class="tag">SHOPEE</div>
-        <div class="offer-big">70% OFF</div>
-        <div class="offer-sub">Fones Bluetooth</div>
+      <!-- Progress bar and info (from A) -->
+      <div class="vagas-progress-wrap">
+        <div class="vagas-info-row">
+          <div class="vagas-text">⚡ Restam <span id="vagasNumText" style="margin-left:6px"></span></div>
+          <div class="vagas-percent" id="vagasPercent" style="color:#6f7a80; font-weight:700">0%</div>
+        </div>
+        <div class="progress-bar" aria-hidden="true">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
       </div>
 
-      <div class="offer-card">
-        <div class="tag">SHOPEE</div>
-        <div class="offer-big">60% OFF</div>
-        <div class="offer-sub">Smartwatch</div>
+      <h1 style="margin-top:10px">CONTINUAÇÃO — OFERTAS & PROVAS</h1>
+
+      <!-- inline join-list -->
+      <div class="join-list" id="joinList" aria-live="polite" style="margin-top:12px">
+        <!-- JS seeds some items -->
       </div>
 
-      <div class="offer-card">
-        <div class="tag">SHOPEE</div>
-        <div class="offer-big">55% OFF</div>
-        <div class="offer-sub">Maquiagem</div>
+      <!-- Features -->
+      <div class="features" aria-label="beneficios">
+        <div class="feature-card">
+          <div class="feature-ico">🔥</div>
+          <div class="feature-content">
+            <div class="feature-title">Cupons de até 70% OFF</div>
+            <div class="feature-desc">Descontos reais e atualizados diariamente.</div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-ico">🎯</div>
+          <div class="feature-content">
+            <div class="feature-title">Exclusivo Shopee</div>
+            <div class="feature-desc">Promoções que só o grupo VIP recebe.</div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-ico">👀</div>
+          <div class="feature-content">
+            <div class="feature-title">Produtos em alta</div>
+            <div class="feature-desc">Os itens mais desejados do momento.</div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-ico">🛡️</div>
+          <div class="feature-content">
+            <div class="feature-title">Ofertas verificadas</div>
+            <div class="feature-desc">Curadoria para você comprar com segurança.</div>
+          </div>
+        </div>
       </div>
 
-      <div class="offer-card">
-        <div class="tag">SHOPEE</div>
-        <div class="offer-big">65% OFF</div>
-        <div class="offer-sub">Tênis Esportivo</div>
+      <!-- Offers recent -->
+      <div class="offers-wrap" aria-label="ofertas-recentes" style="margin-top:18px;">
+        <div class="offers-title">🛒 Ofertas Recentes da Shopee</div>
+
+        <div class="offer-card">
+          <div class="tag">SHOPEE</div>
+          <div class="offer-big">70% OFF</div>
+          <div class="offer-sub">Fones Bluetooth</div>
+        </div>
+
+        <div class="offer-card">
+          <div class="tag">SHOPEE</div>
+          <div class="offer-big">60% OFF</div>
+          <div class="offer-sub">Smartwatch</div>
+        </div>
+
+        <div class="offer-card">
+          <div class="tag">SHOPEE</div>
+          <div class="offer-big">55% OFF</div>
+          <div class="offer-sub">Maquiagem</div>
+        </div>
+
+        <div class="offer-card">
+          <div class="tag">SHOPEE</div>
+          <div class="offer-big">65% OFF</div>
+          <div class="offer-sub">Tênis Esportivo</div>
+        </div>
       </div>
+
     </div>
+    <!-- /LP A continuation -->
 
-  </div>
-  <!-- /continuation -->
+  </div> <!-- /page-wrapper -->
 
-  <!-- FLOATING BAR (same link as main CTA on top) -->
+  <!-- FLOATING BAR (same link as main CTA) -->
   <div class="floating-bar" role="region" aria-label="Ultimas vagas">
     <div class="floating-left">⚡ <strong>ÚLTIMAS VAGAS</strong></div>
     <a id="floatingCta" class="floating-btn" href="#" target="_blank" rel="noopener">Entrar no Grupo</a>
   </div>
 
-  <!-- POPUP template and JS (consolidated, no conflicts) -->
-  <script>
-  (function(){
-    // Configuration
-    const INITIAL_VAGAS = 21; // 0% filled means 21 vagas remaining
-    let vagas = INITIAL_VAGAS;
+<script>
+/* ================== JS UNIFICADO (preserve behavior from both LPs) ================== */
 
-    // Names pool
-    const nomes = [
-      "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
-      "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo",
-      "Mariana","Bruno","Renata","Carlos"
-    ];
+/* CONFIG */
+const INITIAL_VAGAS = 21;
+let vagas = INITIAL_VAGAS;
+const nomes = [
+  "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
+  "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo",
+  "Mariana","Bruno","Renata","Carlos"
+];
 
-    // Elements (select from the unified page)
-    const vagaNumEl_top = document.querySelector('#originalTop #vagasNum'); // original top vagas number (preserved)
-    const vagaBoxEl_top = document.querySelector('#originalTop #vagaBox');
-    const onlineEl = document.querySelector('#originalTop #onlineNum');
+/* ELEMENTS (select within unified dom) */
+const vagaNumEl_top = document.querySelector('#lpB_top #vagasNum');
+const vagaBoxEl_top = document.querySelector('#lpB_top #vagaBox');
+const onlineEl = document.querySelector('#lpB_top #onlineNum');
 
-    const vagasNumText = document.getElementById('vagasNumText'); // in continuation
-    const progressFill = document.getElementById('progressFill');
-    const vagasPercent = document.getElementById('vagasPercent');
-    const joinList = document.getElementById('joinList');
+const vagasNumText = document.getElementById('vagasNumText');
+const progressFill = document.getElementById('progressFill');
+const vagasPercent = document.getElementById('vagasPercent');
+const joinList = document.getElementById('joinList');
 
-    // Find main CTA (original top) without altering markup
-    const mainCta = document.querySelector('#originalTop a.button');
-    const floatingCta = document.getElementById('floatingCta');
-    if (mainCta && floatingCta) {
-      floatingCta.href = mainCta.href; // sync link
-    }
+const mainCta = document.getElementById('mainCta');
+const floatingCta = document.getElementById('floatingCta');
 
-    // sound
-    const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
-    audio.volume = 0.12;
+/* make sure floating CTA follows main CTA immediately */
+if (mainCta && floatingCta) floatingCta.href = mainCta.href;
 
-    // Online counter (keeps lively) - uses existing onlineEl
-    let online = parseInt(onlineEl ? onlineEl.textContent : 137) || 137;
-    function atualizarOnline(){
-      const variacao = Math.floor(Math.random() * 7) - 3;
-      online = Math.max(82, Math.min(220, online + variacao));
-      if (onlineEl) onlineEl.textContent = online;
-      setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
-    }
-    setTimeout(atualizarOnline,1200);
+/* audio */
+const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
+audio.volume = 0.12;
 
-    // Visual update: top vagas and continuation progress
-    function atualizarVisualVagas(){
-      // update top number (preserve original behaviour)
-      if (vagas <= 0){
-        if (vagaBoxEl_top) vagaBoxEl_top.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
-        if (vagaNumEl_top) vagaNumEl_top.textContent = 0;
-        if (vagasNumText) vagasNumText.textContent = "0 vagas";
-        if (progressFill) progressFill.style.width = "100%";
-        if (vagasPercent) vagasPercent.textContent = "100%";
-        if (vagaBoxEl_top) vagaBoxEl_top.classList.add('urgente');
-        return;
-      }
+/* ONLINE COUNTER (lively) */
+let online = parseInt(onlineEl ? onlineEl.textContent : 137) || 137;
+function atualizarOnline(){
+  const variacao = Math.floor(Math.random() * 7) - 3;
+  online = Math.max(82, Math.min(220, online + variacao));
+  if (onlineEl) onlineEl.textContent = online;
+  setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
+}
+setTimeout(atualizarOnline, 1200);
 
-      if (vagaNumEl_top) vagaNumEl_top.textContent = vagas;
-      if (vagasNumText) vagasNumText.textContent = vagas + " vagas";
-      if (vagaBoxEl_top) {
-        if (vagas <= 5) vagaBoxEl_top.classList.add('urgente'); else vagaBoxEl_top.classList.remove('urgente');
-      }
+/* VISUAL UPDATE: vagas (top) + progress (continuation) */
+function atualizarVisualVagas(){
+  // top number
+  if (vagas <= 0){
+    if (vagaBoxEl_top) vagaBoxEl_top.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
+    if (vagaNumEl_top) vagaNumEl_top.textContent = 0;
+    if (vagasNumText) vagasNumText.textContent = "0 vagas";
+    if (progressFill) progressFill.style.width = "100%";
+    if (vagasPercent) vagasPercent.textContent = "100%";
+    if (vagaBoxEl_top) vagaBoxEl_top.classList.add('urgente');
+    return;
+  }
 
-      const filled = ((INITIAL_VAGAS - vagas)/INITIAL_VAGAS) * 100; // 0 when vagas=INITIAL_VAGAS
-      if (progressFill) progressFill.style.width = Math.max(1, filled) + "%";
-      if (vagasPercent) vagasPercent.textContent = Math.round(filled) + "%";
-    }
+  if (vagaNumEl_top) vagaNumEl_top.textContent = vagas;
+  if (vagasNumText) vagasNumText.textContent = vagas + " vagas";
+  if (vagaBoxEl_top) {
+    if (vagas <= 5) vagaBoxEl_top.classList.add('urgente'); else vagaBoxEl_top.classList.remove('urgente');
+  }
 
-    atualizarVisualVagas();
+  const filled = ((INITIAL_VAGAS - vagas)/INITIAL_VAGAS) * 100; // 0 when vagas=INITIAL_VAGAS
+  if (progressFill) progressFill.style.width = Math.max(1, filled) + "%";
+  if (vagasPercent) vagasPercent.textContent = Math.round(filled) + "%";
+}
 
-    // Join card creation
-    function criarJoinCard(nome){
-      const card = document.createElement('div');
-      card.className = 'join-card';
-      const left = document.createElement('div');
-      left.className = 'join-left';
-      const badge = document.createElement('div');
-      badge.className = 'join-badge';
-      badge.textContent = '✓';
-      const nameWrap = document.createElement('div');
-      nameWrap.className = 'join-name';
-      const nameLine = document.createElement('div');
-      nameLine.className = 'n';
-      nameLine.textContent = nome;
-      const small = document.createElement('div');
-      small.className = 'small';
-      small.textContent = 'entrou no grupo agora';
-      nameWrap.appendChild(nameLine);
-      nameWrap.appendChild(small);
-      left.appendChild(badge);
-      left.appendChild(nameWrap);
-      card.appendChild(left);
-      const right = document.createElement('div');
-      right.style.color = '#6f7a80';
-      right.style.fontWeight = '700';
-      right.textContent = '';
-      card.appendChild(right);
-      return card;
-    }
+atualizarVisualVagas();
 
-    // Show popup (bottom-right) and add join card
-    function mostrarPopup(nome){
-      const popup = document.createElement('div');
-      popup.className = 'popup';
-      popup.textContent = nome + ' entrou no grupo.';
-      document.body.appendChild(popup);
-      setTimeout(()=> popup.classList.add('show'),10);
+/* JOIN CARD creation (used by popups) */
+function criarJoinCard(nome){
+  const card = document.createElement('div');
+  card.className = 'join-card';
+  const left = document.createElement('div');
+  left.className = 'join-left';
+  const badge = document.createElement('div');
+  badge.className = 'join-badge';
+  badge.textContent = '✓';
+  const nameWrap = document.createElement('div');
+  nameWrap.className = 'join-name';
+  const nameLine = document.createElement('div');
+  nameLine.className = 'n';
+  nameLine.textContent = nome;
+  const small = document.createElement('div');
+  small.className = 'small';
+  small.textContent = 'entrou no grupo agora';
+  nameWrap.appendChild(nameLine);
+  nameWrap.appendChild(small);
+  left.appendChild(badge);
+  left.appendChild(nameWrap);
+  card.appendChild(left);
+  const right = document.createElement('div');
+  right.style.color = '#6f7a80';
+  right.style.fontWeight = '700';
+  right.textContent = '';
+  card.appendChild(right);
+  return card;
+}
 
-      // play sound
-      audio.currentTime = 0;
-      audio.play().catch(()=>{});
+/* Show popup and add join-card */
+function mostrarPopup(nome){
+  const popup = document.createElement('div');
+  popup.className = 'popup';
+  popup.textContent = nome + ' entrou no grupo.';
+  document.body.appendChild(popup);
+  setTimeout(()=> popup.classList.add('show'),10);
 
-      // add to join-list
-      if (joinList) {
-        const card = criarJoinCard(nome);
-        joinList.insertBefore(card, joinList.firstChild);
+  // play sound
+  audio.currentTime = 0;
+  audio.play().catch(()=>{});
 
-        // remove join card after some time to prevent buildup
-        setTimeout(()=> { if (card.parentNode) card.remove(); }, 16000);
-      }
+  // add join card to continuation area
+  if (joinList) {
+    const card = criarJoinCard(nome);
+    joinList.insertBefore(card, joinList.firstChild);
+    // remove after some time to avoid accumulation
+    setTimeout(()=> { if (card.parentNode) card.remove(); }, 16000);
+  }
 
-      setTimeout(()=> {
-        popup.classList.remove('show'); popup.classList.add('hide');
-        setTimeout(()=> popup.remove(),420);
-      },4600);
-    }
+  setTimeout(()=> {
+    popup.classList.remove('show'); popup.classList.add('hide');
+    setTimeout(()=> popup.remove(),420);
+  },4600);
+}
 
-    // diminuir vaga + update visuals
-    function diminuirVaga(){
-      if (vagas <= 0) return;
-      vagas = Math.max(0, vagas - 1);
-      atualizarVisualVagas();
-    }
+/* decrement vagas and update visuals */
+function diminuirVaga(){
+  if (vagas <= 0) return;
+  vagas = Math.max(0, vagas - 1);
+  atualizarVisualVagas();
+}
 
-    // when an entry event occurs
-    function dispararEventoEntrada(){
-      if (vagas <= 0) return;
-      const nome = nomes[Math.floor(Math.random()*nomes.length)];
-      mostrarPopup(nome);
-      diminuirVaga();
-    }
+/* single entry event */
+function dispararEventoEntrada(){
+  if (vagas <= 0) return;
+  const nome = nomes[Math.floor(Math.random()*nomes.length)];
+  mostrarPopup(nome);
+  diminuirVaga();
+}
 
-    // popup scheduling logic (tuned by vagas)
-    let basePopupMin = 6000;
-    let basePopupMax = 14000;
-    function scheduleNextPopup(){
-      if (vagas <= 0) return null;
-      let min = basePopupMin;
-      let max = basePopupMax;
-      if (vagas <= 4){ min = 18000; max = 26000; }
-      else if (vagas <= 7){ min = 12000; max = 18000; }
-      else if (vagas <= 11){ min = 8000; max = 14000; }
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+/* popup scheduling logic (tuned by vagas) */
+let basePopupMin = 6000;
+let basePopupMax = 14000;
+function scheduleNextPopup(){
+  if (vagas <= 0) return null;
+  let min = basePopupMin;
+  let max = basePopupMax;
+  if (vagas <= 4){ min = 18000; max = 26000; }
+  else if (vagas <= 7){ min = 12000; max = 18000; }
+  else if (vagas <= 11){ min = 8000; max = 14000; }
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-    function startPopups(){
-      if (vagas <= 0) return;
-      dispararEventoEntrada();
-      const intervalo = scheduleNextPopup();
-      if (intervalo) setTimeout(startPopups, intervalo);
-    }
+function startPopups(){
+  if (vagas <= 0) return;
+  dispararEventoEntrada();
+  const intervalo = scheduleNextPopup();
+  if (intervalo) setTimeout(startPopups, intervalo);
+}
 
-    // start
-    setTimeout(startPopups, 5000);
+/* Start the simulated popups after a delay */
+setTimeout(startPopups, 5000);
 
-    // Expose simple console helpers for testing
-    window._dispararEntrada = function(){ dispararEventoEntrada(); };
-    window._setVagas = function(n){ vagas = n; atualizarVisualVagas(); };
+/* Expose console helpers for testing (optional) */
+window._dispararEntrada = function(){ dispararEventoEntrada(); };
+window._setVagas = function(n){ vagas = n; atualizarVisualVagas(); };
 
-    // keep floating CTA synced if main CTA changes (detect via mutation on the href attribute)
-    (function keepFloatingInSync(){
-      const main = mainCta || document.querySelector('#originalTop a.button');
-      if (!main || !floatingCta) return;
-      floatingCta.href = main.href;
-      const obs = new MutationObserver(()=> floatingCta.href = main.href );
-      obs.observe(main, { attributes:true, attributeFilter:['href'] });
-    })();
+/* Keep floating CTA href in sync if main CTA changes dynamically */
+(function keepFloatingInSync(){
+  const main = mainCta || document.querySelector('#lpB_top a.button');
+  if (!main || !floatingCta) return;
+  floatingCta.href = main.href;
+  const obs = new MutationObserver(()=> floatingCta.href = main.href );
+  obs.observe(main, { attributes:true, attributeFilter:['href'] });
+})();
 
-    // seed initial join list items (so continuation area isn't empty)
-    (function seedJoinList(){
-      const starter = ["Mariana S.","Bruno M.","Renata A."];
-      starter.forEach(n => {
-        if (joinList) joinList.appendChild(criarJoinCard(n));
-      });
-    })();
+/* Seed a few join cards so continuation isn't empty */
+(function seedJoinList(){
+  const starter = ["Mariana S.","Bruno M.","Renata A."];
+  starter.forEach(n => {
+    if (joinList) joinList.appendChild(criarJoinCard(n));
+  });
+})();
+</script>
 
-  })();
-  </script>
 </body>
 </html>
