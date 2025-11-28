@@ -27,23 +27,22 @@ background:linear-gradient(#fff,#f7f8fb);
 color:#111;
 }
 
-/* container */
 .container{
 max-width:460px;
 margin:0 auto;
 padding:18px 18px 120px;
 }
 
-/* HERO (ABA MARROM) */
+/* HERO */
 header.hero{
 background:#9b4b56;
 color:white;
 border-radius:24px;
-padding:28px 20px 90px; /* aumentei 6px de padding inferior */
+padding:28px 20px 90px;
 position:relative;
 box-shadow:var(--shadow);
 margin-top:10px;
-z-index:5; /* aumenta a prioridade da aba */
+z-index:5;
 }
 
 header .logo{
@@ -77,10 +76,9 @@ padding:20px;
 margin-top:-60px;
 box-shadow:var(--shadow);
 position:relative;
-z-index:10; /* garante que fica acima da aba */
+z-index:10;
 }
 
-/* Títulos */
 .title-cta{
 font-size:20px;
 font-weight:700;
@@ -94,14 +92,13 @@ margin:8px 0 12px;
 color:var(--muted);
 }
 
-/* texto destacado — pedido por você */
 .sub strong{
 color:#ff7a00;
 font-weight:900;
 font-size:20px;
 }
 
-/* contador */
+/* COUNTER */
 .counter-row{
 display:flex;
 align-items:center;
@@ -116,7 +113,7 @@ color:#222;
 font-size:18px;
 }
 
-/* barra */
+/* PROGRESS BAR */
 .progress-wrap{
 width:100%;
 background:var(--soft);
@@ -147,7 +144,7 @@ box-shadow:0 6px 12px rgba(38,193,90,0.18);
 width:86%;
 }
 
-/* JOIN NOTIFICATIONS */
+/* JOINS */
 .joins{
 margin-top:16px;
 display:flex;
@@ -187,7 +184,7 @@ color:var(--muted);
 display:block;
 }
 
-/* features */
+/* FEATURES */
 .features{
 margin-top:20px;
 display:grid;
@@ -227,7 +224,7 @@ color:var(--muted);
 font-size:13px;
 }
 
-/* offers */
+/* OFFERS */
 .offers{
 margin-top:20px;
 border-radius:18px;
@@ -272,7 +269,7 @@ margin:6px 0;
 color:var(--muted);
 }
 
-/* bottom bar */
+/* BOTTOM BAR */
 .bottom-bar{
 position:fixed;
 left:0;
@@ -317,7 +314,6 @@ text-decoration:none;
 box-shadow:0 6px 16px rgba(36,162,78,0.18);
 }
 
-/* responsive */
 @media (max-width:520px){
 .container{padding:12px}
 header{padding:18px 14px 78px}
@@ -327,7 +323,6 @@ header h1{font-size:22px}
 .hero{padding-bottom:78px}
 }
 
-/* join animation */
 .join-enter{
 transform:translateY(10px) scale(.98);
 opacity:0;
@@ -419,7 +414,6 @@ Vagas limitadas • Apenas para promoções Shopee
 </main>
 </div>
 
-<!-- BOTTOM BAR -->
 <div class="bottom-bar">
 <div class="bottom-inner">
 <div class="bottom-left">⚡ ÚLTIMAS VAGAS</div>
@@ -429,7 +423,6 @@ Vagas limitadas • Apenas para promoções Shopee
 
 <script>
 
-/* CONFIG */
 const WHATSAPP_LINK = "https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7";
 const INITIAL_SEATS = 21;
 
@@ -449,11 +442,9 @@ const joinsContainer = document.getElementById("joins-list");
 const seatsNumEl = document.getElementById("seats-num");
 const progressBar = document.getElementById("progress");
 
-/* inicia com valor correto */
 seatsNumEl.textContent = seats;
 
 /********** NOTIFICAÇÕES **********/
-
 function showJoin(name){
 const div = document.createElement("div");
 div.className = "join join-enter";
@@ -477,8 +468,7 @@ joinsContainer.removeChild(joinsContainer.lastChild);
 setTimeout(()=>{ if(div.parentNode) div.remove(); }, 18000);
 }
 
-/********** ATUALIZA VAGAS **********/
-
+/********** SEATS **********/
 function decrementSeats(){
 if(seats <= 0) return;
 
@@ -496,8 +486,7 @@ const filled = ((INITIAL_SEATS - seats) / INITIAL_SEATS) * 100;
 progressBar.style.width = `${filled}%`;
 }
 
-/********** LOOP **********/
-
+/********** SIMULATION **********/
 let nameIndex = 0;
 
 function startJoinSimulation(){
@@ -527,31 +516,12 @@ next();
 updateProgress();
 startJoinSimulation();
 
-/* links iguais */
 document.getElementById("main-cta").href = WHATSAPP_LINK;
 document.getElementById("bottom-cta").href = WHATSAPP_LINK;
 
-/* clique nas notificações */
 joinsContainer.addEventListener("click", () => {
 window.open(WHATSAPP_LINK, "_blank");
 });
-
-/* persistência simples */
-(function persist(){
-try{
-const key = "encantos_seats_v1";
-const saved = localStorage.getItem(key);
-
-if(saved !== null){
-seats = parseInt(saved,10);
-if(isNaN(seats) || seats < 0) seats = INITIAL_SEATS;
-seatsNumEl.textContent = seats;
-updateProgress();
-}
-
-setInterval(()=> localStorage.setItem(key, seats), 2000);
-}catch(e){}
-})();
 
 </script>
 
