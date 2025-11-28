@@ -25,9 +25,9 @@ body {
     background-blend-mode: overlay;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 20px;
     flex-direction: column;
 }
 
@@ -41,7 +41,6 @@ body {
     max-width: 420px;
     width: 100%;
     position: relative;
-    margin-bottom: 30px;
 }
 
 /* wrapper para manter logo + vagas + pessoas online centralizados */
@@ -184,9 +183,10 @@ a.button:hover::after { left: 200%; }
 .security { color: #6d523d; font-size: 12px; margin-top: 12px; display:inline-flex; gap:8px; align-items:center; }
 .security img { width:16px; height:16px; }
 
+/* POPUPS */
 .popup {
     position: fixed;
-    bottom: 80px;
+    bottom: 20px;
     right: 20px;
     background-color: #ffffff;
     color: #6d523d;
@@ -204,17 +204,18 @@ a.button:hover::after { left: 200%; }
 .popup.show { opacity:1; transform: translateY(0); }
 .popup.hide { opacity:0; transform: translateY(20px); }
 
-@media (max-width:760px){
-    .extra-content { padding: 0 14px; }
-    .btn-flutuante-container { width: calc(100% - 28px); }
-    .feature-card { padding:12px; }
-    .feature-card .icon { width:46px; height:46px; font-size:20px; border-radius:10px; }
+@media (max-width:600px){
+    .container { padding:30px 20px; border-radius:15px; }
+    img { width:90px; }
+    h1 { font-size:20px; }
+    .popup { bottom:15px; right:15px; font-size:13px; padding:8px 12px; }
+    .vagas-balao { min-width: 100px; font-size:15px; padding:8px 12px; }
+    .online-counter { font-size:13px; padding:6px 10px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== CONTAINER PRINCIPAL ===== -->
 <div class="container">
 
     <div class="logo-vagas-wrap">
@@ -233,17 +234,9 @@ a.button:hover::after { left: 200%; }
     </div>
 
     <h1>GRUPO SECRETO DE OFERTAS</h1>
-    <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
 
-    <div class="progress-wrap" aria-hidden="false">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-            <div style="font-weight:700; color:#6b6b6b;">Progresso de adesões</div>
-            <div id="progressLabel" style="font-weight:700; color:#6b6b6b;">0%</div>
-        </div>
-        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="8">
-            <div class="progress-fill" id="progressFill" style="width:8%"></div>
-        </div>
-    </div>
+    <!-- 🔥 NOVO BLOCO LIMPO (sem os textos azuis) -->
+    <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
 
     <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
 
@@ -255,91 +248,13 @@ a.button:hover::after { left: 200%; }
     </div>
 </div>
 
-<!-- ===== CONTEÚDO LONGO (LP LONGA) ===== -->
-<div class="extra-content">
-
-    <div class="testimonial">
-        "Comprei um fone de R$200 por R$79 com as promoções do Encantos em Ofertas! 🎧"
-        <span class="author">- Carlos M.</span>
-    </div>
-
-    <div class="features">
-        <div class="feature-card">
-            <div class="icon">🔥</div>
-            <div>
-                <div class="ftitle">Cupons de até 70% OFF</div>
-                <div class="fsub">Descontos reais e atualizados diariamente.</div>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="icon">🎯</div>
-            <div>
-                <div class="ftitle">Exclusivo Shopee</div>
-                <div class="fsub">Promoções que só o grupo VIP recebe.</div>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="icon">👀</div>
-            <div>
-                <div class="ftitle">Produtos em alta</div>
-                <div class="fsub">Os itens mais desejados do momento.</div>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="icon">🛡️</div>
-            <div>
-                <div class="ftitle">Ofertas verificadas</div>
-                <div class="fsub">Curadoria para você comprar com segurança.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="offers-section">
-        <h2>🛒 Ofertas Recentes da Shopee</h2>
-
-        <div class="offer-card">
-            <div class="offer-badge">SHOPEE</div>
-            <div class="offer-off">70% OFF</div>
-            <div class="offer-desc">Fones Bluetooth</div>
-        </div>
-        <div class="offer-card">
-            <div class="offer-badge">SHOPEE</div>
-            <div class="offer-off">60% OFF</div>
-            <div class="offer-desc">Smartwatch</div>
-        </div>
-        <div class="offer-card">
-            <div class="offer-badge">SHOPEE</div>
-            <div class="offer-off">55% OFF</div>
-            <div class="offer-desc">Maquiagem</div>
-        </div>
-        <div class="offer-card">
-            <div class="offer-badge">SHOPEE</div>
-            <div class="offer-off">65% OFF</div>
-            <div class="offer-desc">Tênis Esportivo</div>
-        </div>
-    </div>
-
-    <div style="text-align:center; color:#6b6b6b; margin-bottom:120px;">
-        Vagas limitadas • Apenas para promoções Shopee e parceiros.
-    </div>
-</div>
-
-<!-- ===== BOTÃO FIXO ===== -->
-<div class="btn-flutuante-container" aria-hidden="false">
-    <div class="btn-info">⚡ <span style="margin-left:6px;">ÚLTIMAS VAGAS</span></div>
-    <a id="fixedJoinBtn" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" class="btn-entrar-grupo">Entrar no Grupo</a>
-</div>
-
 <script>
-let totalVagas = 21;
-let vagas = totalVagas;
+let vagas = 21;
 const vagaNumEl = document.getElementById('vagasNum');
 const vagaBoxEl = document.getElementById('vagaBox');
-const progressFillEl = document.getElementById('progressFill');
-const progressLabelEl = document.getElementById('progressLabel');
 
-let basePopupMin = 4000;
-let basePopupMax = 12000;
+let basePopupMin = 6000;
+let basePopupMax = 14000;
 
 let online = 137;
 const onlineEl = document.getElementById('onlineNum');
@@ -352,9 +267,8 @@ function atualizarOnline() {
 setTimeout(atualizarOnline, 1200);
 
 const nomes = [
-  "Maria Eduarda","Bruno Mendes","Renata Alves","Ana","Lucas","Fernanda",
-  "João Gabriel","Pedro Henrique","Isabela","Rafael","Larissa","Gabriel",
-  "Camila","Matheus","Luana","Caio","Bianca","Eduardo"
+  "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
+  "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo"
 ];
 
 const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
@@ -362,50 +276,73 @@ const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio
 function atualizaVisualVagas() {
     if (vagas <= 0) {
         vagaBoxEl.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
-        setProgressPercent(100);
         return;
     }
     vagaNumEl.textContent = vagas;
-    if (vagas <= 5) vagaBoxEl.classList.add('urgente'); else vagaBoxEl.classList.remove('urgente');
-    const filled = totalVagas - vagas;
-    const percent = Math.round((filled / totalVagas) * 100);
-    setProgressPercent(percent);
+
+    if (vagas <= 5) {
+        vagaBoxEl.classList.add('urgente');
+    } else {
+        vagaBoxEl.classList.remove('urgente');
+    }
 }
-function setProgressPercent(percent) {
-    progressFillEl.style.width = percent + '%';
-    progressLabelEl.textContent = percent + '%';
-    const track = document.querySelector('.progress-track');
-    if (track) track.setAttribute('aria-valuenow', percent);
-}
-function pessoaEntrou() { if (vagas <= 0) return; vagas = Math.max(0, vagas - 1); atualizaVisualVagas(); }
-function mostrarPopup(nome) {
+
+function diminuirVaga() {
     if (vagas <= 0) return;
+    vagas = Math.max(0, vagas - 1);
+    atualizaVisualVagas();
+}
+
+function mostrarPopup() {
+    if (vagas <= 0) return;
+
+    const nome = nomes[Math.floor(Math.random() * nomes.length)];
     const popup = document.createElement('div');
     popup.className = 'popup';
     popup.textContent = `${nome} entrou no grupo.`;
     document.body.appendChild(popup);
+
     setTimeout(()=> popup.classList.add('show'), 10);
+
     audio.currentTime = 0;
     audio.volume = 0.12;
     audio.play().catch(()=>{});
-    pessoaEntrou();
-    setTimeout(()=> { popup.classList.remove('show'); popup.classList.add('hide'); setTimeout(()=> popup.remove(), 420); }, 4600);
+
+    diminuirVaga();
+
+    setTimeout(()=> {
+        popup.classList.remove('show');
+        popup.classList.add('hide');
+        setTimeout(()=> popup.remove(), 420);
+    }, 4600);
 }
-function scheduleNextPopup() { if (vagas <= 0) return null; return Math.floor(Math.random() * (basePopupMax - basePopupMin + 1)) + basePopupMin; }
-function startPopups() { if (vagas <= 0) return; const nome = nomes[Math.floor(Math.random()*nomes.length)]; mostrarPopup(nome); const intervalo = scheduleNextPopup(); setTimeout(startPopups, intervalo); }
 
-vagas = totalVagas;
+function scheduleNextPopup() {
+    if (vagas <= 0) return null;
+
+    let min = basePopupMin;
+    let max = basePopupMax;
+
+    if (vagas <= 4) {
+        min = 18000; max = 26000;
+    } else if (vagas <= 7) {
+        min = 12000; max = 18000;
+    } else if (vagas <= 11) {
+        min = 8000; max = 14000;
+    }
+
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function startPopups() {
+    if (vagas <= 0) return;
+    mostrarPopup();
+    const intervalo = scheduleNextPopup();
+    setTimeout(startPopups, intervalo);
+}
+
 atualizaVisualVagas();
-setTimeout(startPopups, 2500);
-
-const fixedBtn = document.getElementById('fixedJoinBtn');
-if (fixedBtn) { fixedBtn.addEventListener('click', () => { fixedBtn.style.transform = "translateY(-2px)"; setTimeout(()=> fixedBtn.style.transform = "", 150); }); }
-
-window.encantos = {
-    setTotalVagas: function(n){ totalVagas = Math.max(1,Math.floor(n)); atualizaVisualVagas(); },
-    setPopupIntervalRange: function(minMs, maxMs){ basePopupMin = Math.max(800, minMs); basePopupMax = Math.max(basePopupMin + 200, maxMs); },
-    triggerPopupNow: function(name){ mostrarPopup(name || (nomes[Math.floor(Math.random()*nomes.length)])); }
-};
+setTimeout(startPopups, 5000);
 </script>
 
 </body>
