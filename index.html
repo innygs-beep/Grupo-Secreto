@@ -20,10 +20,13 @@
 font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
+/* 🌟 NOVO FUNDO PREMIUM COM ÍCONES DE CUPONS */
 html,body{
 height:100%;
 margin:0;
-background:linear-gradient(#fff,#f7f8fb);
+background:
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDI0MCAyNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjI0MCIgaGVpZ2h0PSIyNDAiIGZpbGw9IiNmZmYiLz4KICA8ZyBvcGFjaXR5PSIwLjA3Ij4KICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjIwIiBmaWxsPSIjYmQ4ODcyIi8+CiAgICA8dGV4dCB4PSIxNDAiIHk9IjEyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwcHgiIGZpbGw9IiNiZDg4NzIiPiU8L3RleHQ+CiAgICA8cGF0aCBkPSJNMjAwIDE4MCBsLTIwIDIwIiBzdHJva2U9IiNiZDg4NzIiIHN0cm9rZS13aWR0aD0iMTQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwvZz4KPC9zdmc+") repeat;
+background-size: 320px 320px;
 color:#111;
 }
 
@@ -35,7 +38,7 @@ padding:18px 18px 120px;
 
 /* HERO */
 header.hero{
-background:#b88872; /* 🔥 NOVA COR */
+background:#b88872;
 color:white;
 border-radius:24px;
 padding:28px 20px 90px;
@@ -486,14 +489,14 @@ const filled = ((INITIAL_SEATS - seats) / INITIAL_SEATS) * 100;
 progressBar.style.width = `${filled}%`;
 }
 
-/********** SIMULAÇÃO (AGORA COM TEMPO REALMENTE ALEATÓRIO) **********/
+/********** SIMULAÇÃO COM TEMPO REALMENTE ALEATÓRIO **********/
 let nameIndex = 0;
 
 function startJoinSimulation(){
 
 function next(){
 
-// 🔥 intervalo realmente aleatório entre 5s e 14s
+// 🔥 intervalo realmente aleatório entre 5.0s e 14.0s
 const delay = Math.floor(Math.random() * (14000 - 5000 + 1)) + 5000;
 
 setTimeout(()=>{
