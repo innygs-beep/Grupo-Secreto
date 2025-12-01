@@ -55,15 +55,13 @@ gap:12px;
 }
 
 header .logo img{
-width:82px; /* tamanho aumentado */
+width:82px;
 height:82px;
 object-fit:cover;
 border-radius:50%;
 }
 
-header .logo div{
-text-align:center;
-}
+header .logo div{ text-align:center; }
 
 header h1{
 margin:12px 0 6px;
@@ -149,7 +147,7 @@ font-weight:700;
 text-decoration:none;
 box-shadow:0 6px 12px rgba(38,193,90,0.18);
 width:86%;
-animation:pulse 1.6s infinite; /* 👍 botão pulsante */
+animation:pulse 1.6s infinite;
 }
 
 @keyframes pulse {
@@ -193,10 +191,7 @@ display:block;
 font-size:15px;
 }
 
-.join small{
-color:var(--muted);
-display:block;
-}
+.join small{ color:var(--muted); display:block; }
 
 /* FEATURES */
 .features{
@@ -227,16 +222,9 @@ justify-content:center;
 font-size:18px;
 }
 
-.feature h4{
-margin:0;
-font-size:16px;
-}
+.feature h4{ margin:0; font-size:16px; }
 
-.feature p{
-margin:4px 0 0;
-color:var(--muted);
-font-size:13px;
-}
+.feature p{ margin:4px 0 0; color:var(--muted); font-size:13px; }
 
 /* OFFERS */
 .offers{
@@ -279,9 +267,7 @@ color:#d94b3b;
 margin:6px 0;
 }
 
-.offer-sub{
-color:var(--muted);
-}
+.offer-sub{ color:var(--muted); }
 
 /* BOTTOM BAR */
 .bottom-bar{
@@ -500,13 +486,15 @@ const filled = ((INITIAL_SEATS - seats) / INITIAL_SEATS) * 100;
 progressBar.style.width = `${filled}%`;
 }
 
-/********** SIMULATION **********/
+/********** SIMULAÇÃO (AGORA COM TEMPO REALMENTE ALEATÓRIO) **********/
 let nameIndex = 0;
 
 function startJoinSimulation(){
 
 function next(){
-const delay = 2800 + Math.random()*3200;
+
+// 🔥 intervalo realmente aleatório entre 5s e 14s
+const delay = Math.floor(Math.random() * (14000 - 5000 + 1)) + 5000;
 
 setTimeout(()=>{
 if(nameIndex >= NAMES.length) nameIndex = 0;
