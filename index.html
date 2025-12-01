@@ -35,7 +35,7 @@ padding:18px 18px 120px;
 
 /* HERO */
 header.hero{
-background:#9b4b56;
+background:#b88872; /* 🔥 NOVA COR */
 color:white;
 border-radius:24px;
 padding:28px 20px 90px;
@@ -45,7 +45,7 @@ margin-top:10px;
 z-index:5;
 }
 
-/* AJUSTE: LOGO ACIMA + CENTRALIZADA + REDONDA */
+/* LOGO */
 header .logo{
 display:flex;
 flex-direction:column;
@@ -55,13 +55,12 @@ gap:12px;
 }
 
 header .logo img{
-width:98px;   /* AUMENTADO */
-height:98px;  /* AUMENTADO */
+width:82px; /* tamanho aumentado */
+height:82px;
 object-fit:cover;
 border-radius:50%;
 }
 
-/* AJUSTE: título e subtítulo centralizados */
 header .logo div{
 text-align:center;
 }
@@ -150,17 +149,13 @@ font-weight:700;
 text-decoration:none;
 box-shadow:0 6px 12px rgba(38,193,90,0.18);
 width:86%;
+animation:pulse 1.6s infinite; /* 👍 botão pulsante */
 }
 
-/* ANIMAÇÃO PULSANTE DO BOTÃO PRINCIPAL */
 @keyframes pulse {
-0% { transform: scale(1); }
-50% { transform: scale(1.06); }
-100% { transform: scale(1); }
-}
-
-.cta-pulse {
-animation: pulse 1.35s infinite ease-in-out;
+0%{transform:scale(1)}
+50%{transform:scale(1.07)}
+100%{transform:scale(1)}
 }
 
 /* JOINS */
@@ -383,7 +378,7 @@ opacity:1;
 </div>
 
 <a id="main-cta"
-class="cta-main cta-pulse"
+class="cta-main"
 href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7"
 target="_blank"
 rel="noopener noreferrer"> 👉 Entrar no Grupo Agora! </a>
