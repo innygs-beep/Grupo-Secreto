@@ -55,10 +55,10 @@ gap:12px;
 }
 
 header .logo img{
-width:72px;
-height:72px;
+width:98px;   /* AUMENTADO */
+height:98px;  /* AUMENTADO */
 object-fit:cover;
-border-radius:50%; /* REDONDA */
+border-radius:50%;
 }
 
 /* AJUSTE: título e subtítulo centralizados */
@@ -150,6 +150,17 @@ font-weight:700;
 text-decoration:none;
 box-shadow:0 6px 12px rgba(38,193,90,0.18);
 width:86%;
+}
+
+/* ANIMAÇÃO PULSANTE DO BOTÃO PRINCIPAL */
+@keyframes pulse {
+0% { transform: scale(1); }
+50% { transform: scale(1.06); }
+100% { transform: scale(1); }
+}
+
+.cta-pulse {
+animation: pulse 1.35s infinite ease-in-out;
 }
 
 /* JOINS */
@@ -372,7 +383,7 @@ opacity:1;
 </div>
 
 <a id="main-cta"
-class="cta-main"
+class="cta-main cta-pulse"
 href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7"
 target="_blank"
 rel="noopener noreferrer"> 👉 Entrar no Grupo Agora! </a>
