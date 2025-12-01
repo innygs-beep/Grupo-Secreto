@@ -20,13 +20,13 @@
 font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-/* 🔥 NOVO FUNDO */
+/* 🔥 FUNDO INVERTIDO: começa mais claro → vai para o mais escuro */
 html,body{
 height:100%;
 margin:0;
 background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ctext x='10' y='30' fill='%23ffffff0b' font-size='28'%3E%25%3C/text%3E%3Ctext x='60' y='80' fill='%23ffffff0b' font-size='28'%3E%F0%9F%9B%92%3C/text%3E%3Ctext x='20' y='100' fill='%23ffffff0b' font-size='28'%3E%E2%9C%82%3C/text%3E%3C/svg%3E") repeat,
-    linear-gradient(180deg,#b88872,#f2e7df);
+    linear-gradient(180deg,#f2e7df 0%, #e6d2c8 35%, #d6b9ab 60%, #c5a090 80%, #b88872 100%);
 background-size: 120px 120px, cover;
 color:#111;
 }
@@ -490,13 +490,14 @@ const filled = ((INITIAL_SEATS - seats) / INITIAL_SEATS) * 100;
 progressBar.style.width = `${filled}%`;
 }
 
-/********** SIMULAÇÃO **********/
+/********** SIMULAÇÃO (AGORA COM TEMPO REALMENTE ALEATÓRIO) **********/
 let nameIndex = 0;
 
 function startJoinSimulation(){
 
 function next(){
 
+// 🔥 intervalo realmente aleatório entre 5s e 14s
 const delay = Math.floor(Math.random() * (14000 - 5000 + 1)) + 5000;
 
 setTimeout(()=>{
