@@ -346,7 +346,7 @@ display: flex; align-items: center; justify-content: center;
 <a class="bottom-btn" id="bottom-cta" href="#" target="_blank">Entrar no Grupo</a>
 </div>
 
-<!-- SCRIPT -->
+<!-- SCRIPT COM DOIS DROPS SINCRONIZADOS -->
 <script>
 const WHATSAPP_LINK = "https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7";
 document.getElementById("main-cta").href = WHATSAPP_LINK;
@@ -366,32 +366,67 @@ const NAMES = [
 "Marina Lopes","Diego Andrade","Caroline F.","Vinicius Barros","Beatriz Moreira"
 ];
 
-function updateProgress(){
+// Atualiza barra
+function updateProgress() {
 progressBar.style.width = `${((INITIAL_SEATS - seats) / INITIAL_SEATS) * 100}%`;
 }
 
+// Pop-up
 function showJoin(name){
 const div = document.createElement("div");
 div.className = "join join-enter";
 div.innerHTML = `
 <div class="icon">✅</div>
-<div><strong>${name}</strong><small>entrou no grupo agora</small></div>
+<div><strong>${name}</strong><small> entrou no grupo agora</small></div>
 `;
 joinsContainer.prepend(div);
-setTimeout(()=>div.remove(),18000);
+setTimeout(() => div.remove(), 18000);
 }
 
+// Simulação normal
 function simulate(){
 setTimeout(()=>{
 const name = NAMES[Math.floor(Math.random()*NAMES.length)];
 showJoin(name);
-if(seats>0){ seats--; seatsNumEl.textContent = seats; updateProgress(); }
+
+if(seats>0){
+seats--;
+seatsNumEl.textContent = seats;
+updateProgress();
+}
+
 simulate();
 }, Math.random()*9000+4000);
 }
 
+// ---------------------------
+// 🔥 DROP 1 (25 → 24) + POPUP
+// ---------------------------
+setTimeout(()=>{
+const name = NAMES[Math.floor(Math.random()*NAMES.length)];
+showJoin(name);
+seats = 24;
+seatsNumEl.textContent = seats;
 updateProgress();
+
+// ---------------------------
+// 🔥 DROP 2 (24 → 23) + POPUP
+// ---------------------------
+setTimeout(()=>{
+const name2 = NAMES[Math.floor(Math.random()*NAMES.length)];
+showJoin(name2);
+seats = 23;
+seatsNumEl.textContent = seats;
+updateProgress();
+
+// Agora inicia o ritmo normal
 simulate();
+
+}, 1500);
+
+}, 1200);
+
+updateProgress();
 </script>
 
 </body>
