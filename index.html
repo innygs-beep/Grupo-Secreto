@@ -421,7 +421,7 @@ Vagas limitadas • Apenas para promoções Shopee selecionadas
         color: #777;
         text-align: center;
     ">
-        <strong>— Carlos M.<strong>
+        <strong>— Carlos M.</strong>
     </p>
 
 </div>
@@ -469,6 +469,32 @@ Vagas limitadas • Apenas para promoções Shopee selecionadas
 <a class="bottom-btn" id="bottom-cta" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener noreferrer">Entrar no Grupo</a>
 </div>
 </div>
+
+<!-- SCRIPT A INSERIDO AQUI -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        try {
+            const seatsEl = document.getElementById("seats-num");
+            const subEl = document.querySelector(".sub");
+            const progressBar = document.getElementById("progress");
+
+            let initialSeats = 21;
+            let newSeats = initialSeats - 1;
+
+            seatsEl.textContent = newSeats;
+            subEl.innerHTML = `⚡ Restam <strong>${newSeats}</strong> vagas hoje`;
+
+            const filled = ((initialSeats - newSeats) / initialSeats) * 100;
+            progressBar.style.width = filled + "%";
+
+        } catch(e){
+            console.error("Erro no drop inicial rápido:", e);
+        }
+    }, 1200);
+});
+</script>
+<!-- FIM DO SCRIPT A -->
 
 <script>
 
@@ -573,29 +599,6 @@ joinsContainer.addEventListener("click", () => {
 window.open(WHATSAPP_LINK, "_blank");
 });
 
-    <script>
-// ====== DROP INICIAL RÁPIDO DAS VAGAS ======
-document.addEventListener("DOMContentLoaded", function () {
-    const seatsNumEl = document.getElementById("seats-num");
-    let seats = parseInt(seatsNumEl.textContent);
-
-    // 🔥 Primeiro drop rápido (apenas 1 vez)
-    setTimeout(() => {
-        if (seats > 0) {
-            seats--;
-            seatsNumEl.textContent = seats;
-
-            // Atualiza texto
-            document.querySelector(".sub").innerHTML =
-                `⚡ Restam <strong>${seats}</strong> vagas hoje`;
-        }
-    }, 700); // ← Aqui você controla quão rápido acontece (700 ms)
-
-    // Após 1.2s, libera o script original começar sua lógica normal
-    setTimeout(() => {
-        window.__initialFastDropDone = true;
-    }, 1200);
-});
 </script>
 
 </body>
