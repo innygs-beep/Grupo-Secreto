@@ -7,6 +7,7 @@
 <title>Encantos em Ofertas</title>
 
 <style>
+/* --- VARIÁVEIS --- */
 :root{
 --bg:#f6f7fb;
 --card:#ffffff;
@@ -45,7 +46,6 @@ margin-top:10px;
 z-index:5;
 }
 
-/* LOGO */
 header .logo{
 display:flex;
 flex-direction:column;
@@ -61,27 +61,22 @@ object-fit:cover;
 border-radius:50%;
 }
 
-header .logo div{ text-align:center; }
-
 header h1{
 margin:12px 0 6px;
 font-size:28px;
 line-height:1;
 }
-header p{
-opacity:.95;
-margin:0 0 8px;
-}
+header p{ opacity:.95; margin:0 0 8px; }
 
-/* MAIN CARD */
+/* CARD */
 .card{
 background:var(--card);
 border-radius:22px;
 padding:20px;
 margin-top:-60px;
 box-shadow:var(--shadow);
-position:relative;
 z-index:10;
+position:relative;
 }
 
 .title-cta{
@@ -101,21 +96,6 @@ color:var(--muted);
 color:#ff7a00;
 font-weight:900;
 font-size:20px;
-}
-
-/* COUNTER */
-.counter-row{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-margin:8px 0 16px;
-}
-
-.counter{
-font-weight:700;
-color:#222;
-font-size:18px;
 }
 
 /* PROGRESS BAR */
@@ -186,13 +166,6 @@ justify-content:center;
 font-size:18px;
 }
 
-.join strong{
-display:block;
-font-size:15px;
-}
-
-.join small{ color:var(--muted); display:block; }
-
 /* FEATURES */
 .features{
 margin-top:20px;
@@ -222,10 +195,6 @@ justify-content:center;
 font-size:18px;
 }
 
-.feature h4{ margin:0; font-size:16px; }
-
-.feature p{ margin:4px 0 0; color:var(--muted); font-size:13px; }
-
 /* OFFERS */
 .offers{
 margin-top:20px;
@@ -235,10 +204,7 @@ background:linear-gradient(180deg,#fbfdff,#f8f9fb);
 box-shadow:var(--shadow);
 }
 
-.offers h3{
-text-align:center;
-margin:4px 0 12px;
-}
+.offers h3{ text-align:center; margin:4px 0 12px; }
 
 .offer-card{
 background:var(--card);
@@ -267,8 +233,6 @@ color:#d94b3b;
 margin:6px 0;
 }
 
-.offer-sub{ color:var(--muted); }
-
 /* BOTTOM BAR */
 .bottom-bar{
 position:fixed;
@@ -287,23 +251,6 @@ border-top-left-radius:14px;
 border-top-right-radius:14px;
 }
 
-.bottom-inner{
-max-width:460px;
-width:100%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-}
-
-.bottom-left{
-color:var(--accent);
-font-weight:800;
-display:flex;
-align-items:center;
-gap:8px;
-}
-
 .bottom-btn{
 background:linear-gradient(180deg,var(--accent),var(--accent-dark));
 color:white;
@@ -313,25 +260,6 @@ font-weight:800;
 text-decoration:none;
 box-shadow:0 6px 16px rgba(36,162,78,0.18);
 }
-
-@media (max-width:520px){
-.container{padding:12px}
-header{padding:18px 14px 78px}
-header h1{font-size:22px}
-.cta-main{width:92%}
-.bottom-btn{padding:12px 14px}
-.hero{padding-bottom:78px}
-}
-
-.join-enter{
-transform:translateY(10px) scale(.98);
-opacity:0;
-transition:all 360ms ease;
-}
-.join-enter.join-show{
-transform:translateY(0) scale(1);
-opacity:1;
-}
 </style>
 </head>
 
@@ -339,9 +267,9 @@ opacity:1;
 
 <div class="container">
 
-<header class="hero" role="banner">
+<header class="hero">
 <div class="logo">
-<img src="logo.jpeg" alt="Encantos em Ofertas logo" onerror="this.style.display='none'">
+<img src="logo.jpeg" alt="Encantos em Ofertas logo">
 <div>
 <div style="font-weight:800">Encantos em Ofertas</div>
 <div style="font-size:13px;opacity:.95">Cupons exclusivos e promoções verificadas — direto no seu WhatsApp.</div>
@@ -351,25 +279,19 @@ opacity:1;
 
 <main>
 
-<section class="card" aria-labelledby="cta-title">
+<section class="card">
 
-<h2 id="cta-title" class="title-cta">👇 Clique para entrar no grupo VIP da Encantos em Ofertas</h2>
+<h2 class="title-cta">👇 Clique para entrar no grupo VIP da Encantos em Ofertas</h2>
 
-<div class="sub">
-⚡ Restam <strong id="seats-num">25</strong> vagas hoje
-</div>
+<div class="sub">⚡ Restam <strong id="seats-num">25</strong> vagas hoje</div>
 
-<div class="progress-wrap" aria-hidden="true">
+<div class="progress-wrap">
 <div id="progress" class="progress-bar"></div>
 </div>
 
-<a id="main-cta"
-class="cta-main"
-href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7"
-target="_blank"
-rel="noopener noreferrer"> 👉 Entrar no Grupo Agora! </a>
+<a id="main-cta" class="cta-main" href="#" target="_blank">👉 Entrar no Grupo Agora!</a>
 
-<div class="joins" id="joins-list" aria-live="polite" aria-atomic="true"></div>
+<div class="joins" id="joins-list"></div>
 
 <p style="margin-top:12px;color:var(--muted);font-size:13px;text-align:center">
 Vagas limitadas • Apenas para promoções Shopee selecionadas
@@ -379,78 +301,34 @@ Vagas limitadas • Apenas para promoções Shopee selecionadas
 
 <!-- Prova Social -->
 <div style="
-    background: white;
-    border-radius: 12px;
-    padding: 16px 18px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-">
-
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="
-            width: 32px;
-            height: 32px;
-            background: #f1f5f9;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        ">
-            💬
-        </div>
-
-        <p style="
-            margin: 0;
-            font-size: 15px;
-            line-height: 1.4;
-            color: #333;
-        ">
-            “Comprei um fone de R$200 por R$79 com as promoções da Encantos em Ofertas! 🎧”
-        </p>
-    </div>
-
-    <p style="
-        margin: 0;
-        margin-top: 4px;
-        font-size: 14px;
-        color: #777;
-        text-align: center;
-    ">
-        <strong>— Carlos M.</strong>
-    </p>
-
+background: white;
+border-radius: 12px;
+padding: 16px 18px;
+margin-top: 12px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+display: flex; flex-direction: column; gap: 6px;">
+<div style="display: flex; align-items: center; gap: 10px;">
+<div style="
+width: 32px; height: 32px;
+background: #f1f5f9;
+border-radius: 8px;
+display: flex; align-items: center; justify-content: center;
+">💬</div>
+<p style="margin:0;font-size:15px;color:#333">“Comprei um fone de R$200 por R$79 com as promoções da Encantos em Ofertas! 🎧”</p>
+</div>
+<p style="margin:0;margin-top:4px;font-size:14px;color:#777;text-align:center">
+<strong>— Carlos M.</strong>
+</p>
 </div>
 
-<div style="height:18px"></div>
-
-<section class="features" aria-label="Benefícios">
-<div class="feature">
-<div class="icon-sm">🔥</div>
-<div><h4>Cupons de até 70% OFF</h4><p>Descontos reais e atualizados diariamente.</p></div>
-</div>
-
-<div class="feature">
-<div class="icon-sm">🎯</div>
-<div><h4>Exclusivo Shopee</h4><p>Promoções que só o grupo VIP recebe.</p></div>
-</div>
-
-<div class="feature">
-<div class="icon-sm">👀</div>
-<div><h4>Produtos em alta</h4><p>Os itens mais desejados do momento.</p></div>
-</div>
-
-<div class="feature">
-<div class="icon-sm">🛡️</div>
-<div><h4>Ofertas verificadas</h4><p>Curadoria para você comprar com segurança.</p></div>
-</div>
+<section class="features">
+<div class="feature"><div class="icon-sm">🔥</div><div><h4>Cupons de até 70% OFF</h4><p>Descontos reais e atualizados diariamente.</p></div></div>
+<div class="feature"><div class="icon-sm">🎯</div><div><h4>Exclusivo Shopee</h4><p>Promoções que só o grupo VIP recebe.</p></div></div>
+<div class="feature"><div class="icon-sm">👀</div><div><h4>Produtos em alta</h4><p>Os itens mais desejados do momento.</p></div></div>
+<div class="feature"><div class="icon-sm">🛡️</div><div><h4>Ofertas verificadas</h4><p>Curadoria para você comprar com segurança.</p></div></div>
 </section>
 
-<section class="offers" aria-label="Ofertas recentes">
+<section class="offers">
 <h3>🛒 Ofertas Recentes da Shopee</h3>
 
 <div class="offer-card"><div class="badge">SHOPEE</div><div class="percent">70% OFF</div><div class="offer-sub">Fones Bluetooth</div></div>
@@ -463,168 +341,57 @@ Vagas limitadas • Apenas para promoções Shopee selecionadas
 </main>
 </div>
 
+<!-- Bottom Bar -->
 <div class="bottom-bar">
-<div class="bottom-inner">
-<div class="bottom-left">⚡ ÚLTIMAS VAGAS</div>
-<a class="bottom-btn" id="bottom-cta" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener noreferrer">Entrar no Grupo</a>
-</div>
+<a class="bottom-btn" id="bottom-cta" href="#" target="_blank">Entrar no Grupo</a>
 </div>
 
-<!-- SCRIPT A COM POP-UP SINCRONIZADO -->
+<!-- SCRIPT -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    setTimeout(() => {
-        try {
-
-            const seatsEl = document.getElementById("seats-num");
-            const subEl = document.querySelector(".sub");
-            const progressBar = document.getElementById("progress");
-            const joinsContainer = document.getElementById("joins-list");
-
-            let initialSeats = 25;
-            let newSeats = initialSeats - 1;
-
-            // DROP INICIAL
-            seatsEl.textContent = newSeats;
-            subEl.innerHTML = `⚡ Restam <strong>${newSeats}</strong> vagas hoje`;
-
-            const filled = ((initialSeats - newSeats) / initialSeats) * 100;
-            progressBar.style.width = filled + "%";
-
-            // POP-UP SINCRONIZADO
-            const firstName = "João Victor";
-
-            const div = document.createElement("div");
-            div.className = "join join-enter";
-            div.innerHTML = `
-                <div class="icon">✅</div>
-                <div>
-                    <strong>${firstName}</strong>
-                    <small>entrou no grupo agora</small>
-                </div>
-            `;
-
-            joinsContainer.insertBefore(div, joinsContainer.firstChild);
-            requestAnimationFrame(() => div.classList.add("join-show"));
-
-            setTimeout(() => { 
-                if(div.parentNode) div.remove(); 
-            }, 18000);
-
-        } catch(e){
-            console.error("Erro no drop + pop-up inicial:", e);
-        }
-
-    }, 1200); // QUANTO MENOR, MAIS "IMPACTO"
-});
-</script>
-<!-- FIM DO SCRIPT A -->
-
-
-<script>
-
 const WHATSAPP_LINK = "https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7";
-const INITIAL_SEATS = 25;
-
-const NAMES = [
-"Maria Eduarda","Bruno Mendes","Renata Alves","Carlos M.","Ana Paula","João Victor","Mariana Silva","Pedro Henrique",
-"Sofia Costa","Gabriel Santos","Larissa Pereira","Lucas Rocha","Camila Oliveira","Rafael Gomes","Isabella Martins",
-"Thiago Ferreira","Letícia A.","Felipe Nascimento","Bianca R.","Gustavo A.","Marina Lopes","Diego Andrade","Caroline F.",
-"Vinicius Barros","Beatriz Moreira","Matheus Lima","Juliana Duarte","André Carvalho","Patrícia Mendes","Vitor Silva",
-"Aline Ramos","Ramon Castro","Daniela S.","Ricardo Alves","Monica Tavares","Eduardo N.","Fernanda P.","Fábio Costa",
-"Ariane M.","Hugo Ribeiro","Priscila S.","Marcelo B.","Nicole Dias","Bruna P.","Murilo F.","Gabriela Soares","Luiza M.",
-"Samuel N.","Tatiana C.","Rodrigo A.","Cláudia P.","Igor Martins"
-];
-
-let seats = INITIAL_SEATS;
-
-const joinsContainer = document.getElementById("joins-list");
-const seatsNumEl = document.getElementById("seats-num");
-const progressBar2 = document.getElementById("progress");
-
-seatsNumEl.textContent = seats;
-
-/********** NOTIFICAÇÕES **********/
-function showJoin(name){
-const div = document.createElement("div");
-div.className = "join join-enter";
-
-div.innerHTML = `
-<div class="icon">✅</div>
-<div>
-<strong>${name}</strong>
-<small>entrou no grupo agora</small>
-</div>
-`;
-
-joinsContainer.insertBefore(div, joinsContainer.firstChild);
-
-requestAnimationFrame(() => div.classList.add("join-show"));
-
-while(joinsContainer.children.length > 6){
-joinsContainer.removeChild(joinsContainer.lastChild);
-}
-
-setTimeout(()=>{ if(div.parentNode) div.remove(); }, 18000);
-}
-
-/********** SEATS **********/
-function decrementSeats(){
-if(seats <= 0) return;
-
-seats--;
-seatsNumEl.textContent = seats;
-
-document.querySelector(".sub").innerHTML =
-`⚡ Restam <strong>${seats}</strong> vagas hoje`;
-
-updateProgress();
-}
-
-function updateProgress(){
-const filled = ((INITIAL_SEATS - seats) / INITIAL_SEATS) * 100;
-progressBar2.style.width = `${filled}%`;
-}
-
-/********** SIMULAÇÃO **********/
-let nameIndex = 0;
-
-function startJoinSimulation(){
-
-function next(){
-
-const delay = Math.floor(Math.random() * (14000 - 5000 + 1)) + 5000;
-
-setTimeout(()=>{
-if(nameIndex >= NAMES.length) nameIndex = 0;
-
-showJoin(NAMES[nameIndex++]);
-
-if(seats > 0){
-decrementSeats();
-} else {
-document.querySelector(".sub").innerHTML =
-`⚡ <strong>Vagas esgotadas</strong> — tente novamente mais tarde`;
-}
-
-next();
-}, delay);
-}
-
-next();
-}
-
-updateProgress();
-startJoinSimulation();
-
 document.getElementById("main-cta").href = WHATSAPP_LINK;
 document.getElementById("bottom-cta").href = WHATSAPP_LINK;
 
-joinsContainer.addEventListener("click", () => {
-window.open(WHATSAPP_LINK, "_blank");
-});
+const INITIAL_SEATS = 25;
+let seats = INITIAL_SEATS;
 
+const seatsNumEl = document.getElementById("seats-num");
+const progressBar = document.getElementById("progress");
+const joinsContainer = document.getElementById("joins-list");
+
+const NAMES = [
+"Maria Eduarda","Bruno Mendes","Renata Alves","Carlos M.","Ana Paula","João Victor","Mariana Silva","Pedro Henrique",
+"Sofia Costa","Gabriel Santos","Larissa Pereira","Lucas Rocha","Camila Oliveira","Rafael Gomes",
+"Isabella Martins","Thiago Ferreira","Letícia A.","Felipe Nascimento","Bianca R.","Gustavo A.",
+"Marina Lopes","Diego Andrade","Caroline F.","Vinicius Barros","Beatriz Moreira"
+];
+
+function updateProgress(){
+progressBar.style.width = `${((INITIAL_SEATS - seats) / INITIAL_SEATS) * 100}%`;
+}
+
+function showJoin(name){
+const div = document.createElement("div");
+div.className = "join join-enter";
+div.innerHTML = `
+<div class="icon">✅</div>
+<div><strong>${name}</strong><small>entrou no grupo agora</small></div>
+`;
+joinsContainer.prepend(div);
+setTimeout(()=>div.remove(),18000);
+}
+
+function simulate(){
+setTimeout(()=>{
+const name = NAMES[Math.floor(Math.random()*NAMES.length)];
+showJoin(name);
+if(seats>0){ seats--; seatsNumEl.textContent = seats; updateProgress(); }
+simulate();
+}, Math.random()*9000+4000);
+}
+
+updateProgress();
+simulate();
 </script>
 
 </body>
