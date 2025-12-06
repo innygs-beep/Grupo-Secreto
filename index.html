@@ -573,6 +573,29 @@ joinsContainer.addEventListener("click", () => {
 window.open(WHATSAPP_LINK, "_blank");
 });
 
+    <script>
+// ====== DROP INICIAL RÁPIDO DAS VAGAS ======
+document.addEventListener("DOMContentLoaded", function () {
+    const seatsNumEl = document.getElementById("seats-num");
+    let seats = parseInt(seatsNumEl.textContent);
+
+    // 🔥 Primeiro drop rápido (apenas 1 vez)
+    setTimeout(() => {
+        if (seats > 0) {
+            seats--;
+            seatsNumEl.textContent = seats;
+
+            // Atualiza texto
+            document.querySelector(".sub").innerHTML =
+                `⚡ Restam <strong>${seats}</strong> vagas hoje`;
+        }
+    }, 700); // ← Aqui você controla quão rápido acontece (700 ms)
+
+    // Após 1.2s, libera o script original começar sua lógica normal
+    setTimeout(() => {
+        window.__initialFastDropDone = true;
+    }, 1200);
+});
 </script>
 
 </body>
