@@ -356,7 +356,7 @@ opacity:1;
 <h2 id="cta-title" class="title-cta">👇 Clique para entrar no grupo VIP da Encantos em Ofertas</h2>
 
 <div class="sub">
-⚡ Restam <strong id="seats-num">21</strong> vagas hoje
+⚡ Restam <strong id="seats-num">25</strong> vagas hoje
 </div>
 
 <div class="progress-wrap" aria-hidden="true">
@@ -377,7 +377,7 @@ Vagas limitadas • Apenas para promoções Shopee selecionadas
 
 </section>
 
-<!-- Card de prova social separado -->
+<!-- Prova Social -->
 <div style="
     background: white;
     border-radius: 12px;
@@ -470,36 +470,62 @@ Vagas limitadas • Apenas para promoções Shopee selecionadas
 </div>
 </div>
 
-<!-- SCRIPT A INSERIDO AQUI -->
+<!-- SCRIPT A COM POP-UP SINCRONIZADO -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+
     setTimeout(() => {
         try {
+
             const seatsEl = document.getElementById("seats-num");
             const subEl = document.querySelector(".sub");
             const progressBar = document.getElementById("progress");
+            const joinsContainer = document.getElementById("joins-list");
 
-            let initialSeats = 21;
+            let initialSeats = 25;
             let newSeats = initialSeats - 1;
 
+            // DROP INICIAL
             seatsEl.textContent = newSeats;
             subEl.innerHTML = `⚡ Restam <strong>${newSeats}</strong> vagas hoje`;
 
             const filled = ((initialSeats - newSeats) / initialSeats) * 100;
             progressBar.style.width = filled + "%";
 
+            // POP-UP SINCRONIZADO
+            const firstName = "João Victor";
+
+            const div = document.createElement("div");
+            div.className = "join join-enter";
+            div.innerHTML = `
+                <div class="icon">✅</div>
+                <div>
+                    <strong>${firstName}</strong>
+                    <small>entrou no grupo agora</small>
+                </div>
+            `;
+
+            joinsContainer.insertBefore(div, joinsContainer.firstChild);
+            requestAnimationFrame(() => div.classList.add("join-show"));
+
+            setTimeout(() => { 
+                if(div.parentNode) div.remove(); 
+            }, 18000);
+
         } catch(e){
-            console.error("Erro no drop inicial rápido:", e);
+            console.error("Erro no drop + pop-up inicial:", e);
         }
-    }, 1200);
+
+    }, 1200); // QUANTO MENOR, MAIS "IMPACTO"
 });
 </script>
 <!-- FIM DO SCRIPT A -->
 
+
 <script>
 
 const WHATSAPP_LINK = "https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7";
-const INITIAL_SEATS = 21;
+const INITIAL_SEATS = 25;
 
 const NAMES = [
 "Maria Eduarda","Bruno Mendes","Renata Alves","Carlos M.","Ana Paula","João Victor","Mariana Silva","Pedro Henrique",
@@ -515,7 +541,7 @@ let seats = INITIAL_SEATS;
 
 const joinsContainer = document.getElementById("joins-list");
 const seatsNumEl = document.getElementById("seats-num");
-const progressBar = document.getElementById("progress");
+const progressBar2 = document.getElementById("progress");
 
 seatsNumEl.textContent = seats;
 
@@ -558,7 +584,7 @@ updateProgress();
 
 function updateProgress(){
 const filled = ((INITIAL_SEATS - seats) / INITIAL_SEATS) * 100;
-progressBar.style.width = `${filled}%`;
+progressBar2.style.width = `${filled}%`;
 }
 
 /********** SIMULAÇÃO **********/
