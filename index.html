@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<html>
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -66,7 +65,6 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; /* <--- adicionado: garante espaçamento entre "Restam", número e "Vagas!" */
     padding: 8px 16px;
     border-radius: 14px;
     font-size: 16px;
@@ -212,7 +210,6 @@ a.button:hover::after { left: 200%; }
     .online-counter { font-size:13px; padding:6px 10px; }
 }
 </style>
-<meta http-equiv="refresh" content="0; URL='https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7?mode=hqrc'" />
 </head>
 <body>
 
@@ -221,11 +218,10 @@ a.button:hover::after { left: 200%; }
     <div class="logo-vagas-wrap">
         <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
 
-        <!-- BALÃO CORRIGIDO: usei spans + gap para forçar espaçamento consistente -->
-        <div id="vagaBox" class="vagas-balao" aria-live="polite">
-            <span class="vaga-text">Restam</span>
-            <span id="vagasNum">21</span>
-            <span class="vaga-text">Vagas!</span>
+        <!-- CORRIGIDO AQUI: espaço ajustado -->
+        <!-- BALÃO CORRIGIDO AQUI -->
+        <div id="vagaBox" class="vagas-balao">
+            Restam <span id="vagasNum">21</span> Vagas!
         </div>
 
         <div id="onlineCounter" class="online-counter">
@@ -267,6 +263,7 @@ function atualizarOnline() {
     const variacao = Math.floor(Math.random() * 7) - 3; // -3..+3
     online = Math.max(82, Math.min(220, online + variacao));
     onlineEl.textContent = online;
+    // variação aleatória mais lenta pra parecer natural
     setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
 }
 setTimeout(atualizarOnline, 1200);
@@ -348,9 +345,8 @@ function startPopups() {
 }
 
 atualizaVisualVagas();
-setTimeout(startPopups, 5000);
+setTimeout(startPopups, 2000);
 </script>
 
-<p>Redirecionando...</p>
 </body>
 </html>
