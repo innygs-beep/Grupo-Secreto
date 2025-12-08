@@ -1,356 +1,334 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Encantos em Oferta - Grupo Secreto</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Encantos em Oferta - Grupo Secreto</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-* { box-sizing: border-box; }
+        * { box-sizing: border-box; }
 
-html,body{height:100%;}
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #d2bba3;
+            background-image:
+                url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
+                url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
+                url('https://images.unsplash.com/photo-1580894740849-6119a80c1f49?auto=format&fit=crop&w=1400&q=60');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            flex-direction: column;
+        }
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #d2bba3;
-    background-image:
-      url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=60'),
-      url('https://images.unsplash.com/photo-1616627451802-c8a54b3c84f5?auto=format&fit=crop&w=1400&q=60'),
-      url('https://images.unsplash.com/photo-1580894740849-6119a80c1f49?auto=format&fit=crop&w=1400&q=60');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-blend-mode: overlay;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    flex-direction: column;
-}
+        .container {
+            background-color: #f5ede2;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
 
-/* ====== CONTAINER ORIGINAL ====== */
-.container {
-    background-color: #f5ede2;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    padding: 40px 30px;
-    text-align: center;
-    max-width: 420px;
-    width: 100%;
-    position: relative;
-}
+        img {
+            width: 120px;
+            margin-bottom: 10px;
+            border-radius: 50%;
+        }
 
-/* wrapper para manter logo + vagas + pessoas online centralizados */
-.logo-vagas-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 8px;
-}
+        h1 {
+            color: #8b6b4f;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
 
-/* ====== LOGO ====== */
-img {
-    width: 120px;
-    margin: 0;
-    border-radius: 50%;
-}
+        .subtitle {
+            color: #8b6b4f;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
 
-/* ====== BALÃO DAS VAGAS ====== */
-.vagas-balao {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; /* <--- adicionado: garante espaçamento entre "Restam", número e "Vagas!" */
-    padding: 8px 16px;
-    border-radius: 14px;
-    font-size: 16px;
-    font-weight: 700;
-    background: linear-gradient(90deg,#ff6b6b,#ff3b3b);
-    color: #fff;
-    box-shadow: 0 6px 18px rgba(255,80,80,0.16);
-    min-width: 140px; 
-    text-align:center;
-    animation: pulse 1.8s ease-in-out infinite;
-    transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
-}
+        .fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInUp 1s ease forwards;
+        }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
-    100% { transform: scale(1); }
-}
+        .fade-in:nth-child(1) { animation-delay: 0.2s; }
+        .fade-in:nth-child(2) { animation-delay: 0.6s; }
+        .fade-in:nth-child(3) { animation-delay: 1s; }
+        .fade-in:nth-child(4) { animation-delay: 1.4s; }
 
-.vagas-balao.urgente {
-    background: linear-gradient(90deg,#ff3b3b,#d40000) !important;
-    box-shadow: 0 8px 26px rgba(212,0,0,0.25) !important;
-    animation: pulseUrg 1.1s ease-in-out infinite !important;
-}
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-@keyframes pulseUrg {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.12); }
-    100% { transform: scale(1); }
-}
+        a.button {
+            display: inline-block;
+            background: linear-gradient(90deg, #8b6b4f, #a38367);
+            color: white;
+            padding: 14px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+            animation: bounce 1.5s infinite ease-in-out;
+            margin-bottom: 12px;
+        }
 
-/* ====== CONTADOR ONLINE (BOLINHA VERDE + TEXTO) ====== */
-.online-counter {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #8b6b4f;
-    background: rgba(255,255,255,0.9);
-    padding: 6px 12px;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    white-space: nowrap;
-}
+        a.button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
 
-.online-dot {
-    width: 10px;
-    height: 10px;
-    background: #2ecc71; /* verde online */
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(46,204,113,0.35);
-}
+        a.button:hover::after { left: 200%; }
 
-/* ====== RESTANTE DO CSS ORIGINAL ====== */
-h1 {
-    color: #8b6b4f;
-    font-size: 22px;
-    font-weight: 700;
-    margin: 12px 0 8px 0;
-}
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
 
-.subtitle {
-    color: #8b6b4f;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
+        .subproof {
+            color: #6d523d;
+            font-size: 13px;
+            margin-bottom: 18px;
+            opacity: 0.85;
+        }
 
-.fade-in {
-    opacity: 0;
-    transform: translateY(15px);
-    animation: fadeInUp 1s ease forwards;
-}
-
-.fade-in:nth-child(1) { animation-delay: 0.2s; }
-.fade-in:nth-child(2) { animation-delay: 0.6s; }
-.fade-in:nth-child(3) { animation-delay: 1s; }
-.fade-in:nth-child(4) { animation-delay: 1.4s; }
-
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-a.button {
-    display: inline-block;
-    background: linear-gradient(90deg, #8b6b4f, #a38367);
-    color: white;
-    padding: 14px 25px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-    overflow: hidden;
-    animation: bounce 1.5s infinite ease-in-out;
-    margin: 12px 0;
-}
-
-a.button::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.36);
-    transform: skewX(-25deg);
-    transition: left 0.6s ease;
-}
-a.button:hover::after { left: 200%; }
-@keyframes bounce { 0%,100% { transform: scale(1);} 50% { transform: scale(1.08);} }
-
-.subproof { color: #6d523d; font-size: 13px; margin-bottom: 12px; opacity: 0.95; }
-
-.security { color: #6d523d; font-size: 12px; margin-top: 12px; display:inline-flex; gap:8px; align-items:center; }
-.security img { width:16px; height:16px; }
-
-/* POPUPS */
-.popup {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffffff;
+        /* security: alinhamento garantido */
+        /* security: ícone ANTECEDE o texto e tudo em UMA LINHA */
+        .security {
     color: #6d523d;
-    padding: 10px 16px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    font-size: 14px;
-    font-weight: 600;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.45s ease;
-    z-index: 9999;
-    border: 1px solid rgba(0,0,0,0.04);
+    font-size: 12px;
+    margin: 12px auto 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: 260px; /* impede quebra feia */
+    line-height: 1.35; /* deixa mais elegante */
+    flex-wrap: wrap;   /* permite quebra suave */
 }
-.popup.show { opacity:1; transform: translateY(0); }
-.popup.hide { opacity:0; transform: translateY(20px); }
 
-@media (max-width:600px){
-    .container { padding:30px 20px; border-radius:15px; }
-    img { width:90px; }
-    h1 { font-size:20px; }
-    .popup { bottom:15px; right:15px; font-size:13px; padding:8px 12px; }
-    .vagas-balao { min-width: 100px; font-size:15px; padding:8px 12px; }
-    .online-counter { font-size:13px; padding:6px 10px; }
+.security img {
+    width: 16px;
+    height: 16px;
+    margin-top: -1px; /* correção fina do alinhamento vertical */
+    display: inline-block;
 }
-</style>
+
+        /* POP-UP (restaurado e ajustado) */
+            color: #6d523d;
+            font-size: 12px;
+            margin-top: 12px;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.95;
+            white-space: nowrap;     /* força uma única linha */
+            max-width: 100%;         /* permite centralizar */
+            padding: 4px 8px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .security img {
+            width: 16px;
+            height: 16px;
+            border-radius: 0;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* POP-UP (mantido) */
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: #6d523d;
+            padding: 10px 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            z-index: 9999;
+            display: inline-block;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        @keyframes fadeInPopup {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOutPopup {
+            to {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+
+        /* Esses estilos permitem que a animação funcione como antes (fade in/out) */
+        .popup.show {
+            animation: fadeInPopup 0.35s ease forwards;
+        }
+
+        .popup.hide {
+            animation: fadeOutPopup 0.35s ease forwards;
+        }
+        .popup.show { animation: fadeInPopup 0.35s ease forwards; }
+        .popup.hide { animation: fadeOutPopup 0.35s ease forwards; }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+                background-position: center top;
+                background-attachment: scroll;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            img { width: 90px; }
+
+            h1 { font-size: 20px; }
+
+            .subtitle { font-size: 14px; }
+
+            a.button { padding: 12px 20px; font-size: 14px; }
+
+            .security {
+                font-size: 12px;
+                gap: 8px;
+                /* em telas muito estreitas, reduzimos levemente o ícone/texto para manter 1 linha */
+            }
+
+            .popup {
+                bottom: 15px;
+                right: 15px;
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+
+            .security { font-size: 11px; margin-top: 10px; }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <img src="logo.jpeg" alt="Logo Encantos" />
+        <h1>GRUPO SECRETO DE OFERTAS</h1>
 
-<div class="container">
+        <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
+        <p class="subtitle fade-in">⚠️ <strong>Últimas vagas disponíveis.</strong></p>
+        <p class="subtitle fade-in">Depois que o grupo lotar, o acesso será fechado.</p>
+        <p class="subtitle fade-in">Entre agora e garanta seu lugar antes que acabe.</p>
 
-    <div class="logo-vagas-wrap">
-        <img src="logo.jpeg" alt="Logo Encantos" id="logoMain" />
+        <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
 
-        <!-- BALÃO CORRIGIDO AQUI -->
-        <div id="vagaBox" class="vagas-balao">
-            Restam <span id="vagasNum">21</span> Vagas!
-        <!-- BALÃO CORRIGIDO: usei spans + gap para forçar espaçamento consistente -->
-        <div id="vagaBox" class="vagas-balao" aria-live="polite">
-            <span class="vaga-text">Restam</span>
-            <span id="vagasNum">21</span>
-            <span class="vaga-text">Vagas!</span>
+        <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
+
+        <!-- ícone antecedendo a frase, tudo em uma linha -->
+        <div class="security">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
+            Entrada protegida, sem SPAM. Você pode sair quando quiser.
+            <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
         </div>
-
-        <div id="onlineCounter" class="online-counter">
-            <span class="online-dot" aria-hidden="true"></span>
-            <span id="onlineNum">137</span> pessoas online agora
-        </div>
-
     </div>
 
-    <h1>GRUPO SECRETO DE OFERTAS</h1>
+    <script>
+        const nomes = [
+            "Ana", "Lucas", "Fernanda", "Maria Clara", "João Gabriel", "Pedro Henrique", "Isabela", "Rafael", "Larissa",
+            "Gabriel", "Camila", "Matheus", "Luana", "Caio", "Bianca", "Eduardo", "Juliana", "Vinícius", "Amanda", "Felipe",
+            "Sofia", "Leonardo", "Beatriz", "Gustavo", "Letícia", "Thiago", "Carolina", "Bruno", "Marina", "André", "Vitória",
+            "Rodrigo", "Patrícia", "Diego", "Natália", "Daniel", "Gabriela", "Hugo", "Manuela", "Vitor", "Bruna", "Igor",
+            "Marcelo", "Roberta", "Henrique", "Lorena", "Paulo", "Nicole", "Murilo", "Vanessa", "Antônio", "Cláudia",
+            "Samuel", "Carla", "Otávio", "Evelyn", "Renato", "Mirella", "Arthur", "Débora", "Luiz Felipe", "Alice", "Bernardo",
+            "Melissa", "João Pedro", "Caroline", "José Augusto", "Caíque", "Marta", "Nathan", "Yasmin", "Cauã", "Clarice",
+            "Pietro", "Lorraine", "Miguel", "Aline", "Sérgio", "Jéssica", "Alex", "Priscila", "Francisco", "Tainá", "Rogério",
+            "Elisa", "Anderson", "Lívia", "Enzo Gabriel", "Mariana", "Luiz Otávio", "Cecília", "João Vitor", "Eduarda",
+            "Ricardo José", "Rebeca"
+        ];
 
-    <p class="subtitle fade-in">Receba <strong>achados reais</strong>, <strong>cupons escondidos</strong> e promoções que duram minutos.</p>
-    <p class="subtitle fade-in">⚠️ <strong>Últimas vagas disponíveis.</strong></p>
-    <p class="subtitle fade-in">Depois que o grupo lotar, o acesso será fechado.</p>
-    <p class="subtitle fade-in">Entre agora e garanta seu lugar antes que acabe.</p>
+        // Som suave
+        const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
-    <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener">Acessar as Ofertas Agora!</a>
+        function mostrarPopup() {
+            const nome = nomes[Math.floor(Math.random() * nomes.length)];
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.textContent = `${nome} entrou no grupo.`;
+            document.body.appendChild(popup);
 
-    <div class="subproof">Atualizado diariamente — ofertas reais, sem enrolação.</div>
+            // forçar a classe de show para animar entrada
+            setTimeout(() => popup.classList.add('show'), 10);
 
-    <div class="security">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
-        <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
-    </div>
-</div>
+            // tocar som suave
+            audio.currentTime = 0;
+            audio.volume = 0.15;
+            audio.play().catch(()=>{ /* autoplay pode falhar em alguns navegadores - silencioso */ });
 
-<script>
-let vagas = 21;
-const vagaNumEl = document.getElementById('vagasNum');
-const vagaBoxEl = document.getElementById('vagaBox');
+            // depois de 4.6s faz a animação de hide e remove
+            setTimeout(() => {
+                popup.classList.remove('show');
+                popup.classList.add('hide');
+                setTimeout(() => popup.remove(), 420);
+            }, 4600);
+        }
 
-let basePopupMin = 6000;
-let basePopupMax = 14000;
+        function iniciarPopups() {
+            const intervalo = Math.floor(Math.random() * 8000) + 6000;
+            mostrarPopup();
+            setTimeout(iniciarPopups, intervalo);
+        }
 
-/* ===== Conta online (fake) ===== */
-let online = 137;
-const onlineEl = document.getElementById('onlineNum');
-function atualizarOnline() {
-    const variacao = Math.floor(Math.random() * 7) - 3; // -3..+3
-    online = Math.max(82, Math.min(220, online + variacao));
-    onlineEl.textContent = online;
-    setTimeout(atualizarOnline, Math.floor(Math.random()*5000) + 3000);
-}
-setTimeout(atualizarOnline, 1200);
-
-/* POPUPS e vagas */
-const nomes = [
-  "Ana","Lucas","Fernanda","Maria Clara","João Gabriel","Pedro Henrique","Isabela",
-  "Rafael","Larissa","Gabriel","Camila","Matheus","Luana","Caio","Bianca","Eduardo"
-];
-
-const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
-
-function atualizaVisualVagas() {
-    if (vagas <= 0) {
-        vagaBoxEl.innerHTML = "🚨 Grupo LOTADO! Aguarde novas vagas.";
-        return;
-    }
-    vagaNumEl.textContent = vagas;
-
-    if (vagas <= 5) {
-        vagaBoxEl.classList.add('urgente');
-    } else {
-        vagaBoxEl.classList.remove('urgente');
-    }
-}
-
-function diminuirVaga() {
-    if (vagas <= 0) return;
-    vagas = Math.max(0, vagas - 1);
-    atualizaVisualVagas();
-}
-
-function mostrarPopup() {
-    if (vagas <= 0) return;
-
-    const nome = nomes[Math.floor(Math.random() * nomes.length)];
-    const popup = document.createElement('div');
-    popup.className = 'popup';
-    popup.textContent = `${nome} entrou no grupo.`;
-    document.body.appendChild(popup);
-
-    setTimeout(()=> popup.classList.add('show'), 10);
-
-    audio.currentTime = 0;
-    audio.volume = 0.12;
-    audio.play().catch(()=>{});
-
-    diminuirVaga();
-
-    setTimeout(()=> {
-        popup.classList.remove('show');
-        popup.classList.add('hide');
-        setTimeout(()=> popup.remove(), 420);
-    }, 4600);
-}
-
-function scheduleNextPopup() {
-    if (vagas <= 0) return null;
-
-    let min = basePopupMin;
-    let max = basePopupMax;
-
-    if (vagas <= 4) {
-        min = 18000; max = 26000;
-    } else if (vagas <= 7) {
-        min = 12000; max = 18000;
-    } else if (vagas <= 11) {
-        min = 8000; max = 14000;
-    }
-
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function startPopups() {
-    if (vagas <= 0) return;
-    mostrarPopup();
-    const intervalo = scheduleNextPopup();
-    setTimeout(startPopups, intervalo);
-}
-
-atualizaVisualVagas();
-setTimeout(startPopups, 5000);
-</script>
-
+        // mantém exatamente o timing que você já tinha (start = 5000ms)
+        setTimeout(iniciarPopups, 5000);
+    </script>
 </body>
 </html>
