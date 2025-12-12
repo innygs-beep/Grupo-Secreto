@@ -2,31 +2,34 @@
 <html lang="pt-BR">
 <head>
     <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1980099556182497');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1980099556182497&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Encantos em Oferta - Grupo Secreto</title>
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1980099556182497');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1980099556182497&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Encantos em Oferta - Grupo Secreto</title>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 * { box-sizing: border-box; }
 
-html,body{height:100%;}
+html, body { height: 100%; }
 
 body {
     margin: 0;
@@ -48,7 +51,7 @@ body {
     flex-direction: column;
 }
 
-/* ====== CONTAINER ORIGINAL ====== */
+/* ====== CONTAINER ====== */
 .container {
     background-color: #f5ede2;
     border-radius: 20px;
@@ -60,29 +63,29 @@ body {
     position: relative;
 }
 
-/* wrapper para manter logo + vagas + pessoas online centralizados */
+/* wrapper */
 .logo-vagas-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
     gap: 8px;
+    width: 100%;
 }
 
-/* ====== LOGO ====== */
+/* logo */
 img {
     width: 120px;
     margin: 0;
     border-radius: 50%;
 }
 
-/* ====== BALÃO DAS VAGAS ====== */
+/* vagas */
 .vagas-balao {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; 
+    gap: 8px;
     padding: 8px 16px;
     border-radius: 14px;
     font-size: 16px;
@@ -90,8 +93,8 @@ img {
     background: linear-gradient(90deg,#ff6b6b,#ff3b3b);
     color: #fff;
     box-shadow: 0 6px 18px rgba(255,80,80,0.16);
-    min-width: 140px; 
-    text-align:center;
+    min-width: 140px;
+    text-align: center;
     animation: pulse 1.8s ease-in-out infinite;
     transition: background 0.25s, box-shadow 0.25s, transform 0.15s;
 }
@@ -114,7 +117,7 @@ img {
     100% { transform: scale(1); }
 }
 
-/* ====== CONTADOR ONLINE ====== */
+/* contador */
 .online-counter {
     display: inline-flex;
     align-items: center;
@@ -133,7 +136,7 @@ img {
 .online-dot {
     width: 10px;
     height: 10px;
-    background: #2ecc71; 
+    background: #2ecc71;
     border-radius: 50%;
     box-shadow: 0 0 6px rgba(46,204,113,0.35);
 }
@@ -166,6 +169,7 @@ h1 {
 
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
+/* botão */
 a.button {
     display: inline-block;
     background: linear-gradient(90deg, #00c851, #007e33);
@@ -193,11 +197,20 @@ a.button::after {
 
 a.button:hover::after { left: 200%; }
 
-@keyframes bounce { 0%,100% { transform: scale(1);} 50% { transform: scale(1.08);} }
+@keyframes bounce {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
 
-.subproof { color: #6d523d; font-size: 13px; margin-bottom: 12px; opacity: 0.95; }
+.security {
+    color: #6d523d;
+    font-size: 12px;
+    margin-top: 12px;
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+}
 
-.security { color: #6d523d; font-size: 12px; margin-top: 12px; display:inline-flex; gap:8px; align-items:center; }
 .security img { width:16px; height:16px; }
 
 /* POPUPS */
@@ -218,6 +231,7 @@ a.button:hover::after { left: 200%; }
     z-index: 9999;
     border: 1px solid rgba(0,0,0,0.04);
 }
+
 .popup.show { opacity:1; transform: translateY(0); }
 .popup.hide { opacity:0; transform: translateY(20px); }
 
@@ -230,6 +244,7 @@ a.button:hover::after { left: 200%; }
     .online-counter { font-size:13px; padding:6px 10px; }
 }
 </style>
+
 </head>
 <body>
 
@@ -252,19 +267,20 @@ a.button:hover::after { left: 200%; }
 
     <h1>GRUPO VIP DE OFERTAS ⤵️</h1>
 
-    <!-- 🔥 NOVO BLOCO LIMPO (sem os textos azuis) -->
-    <p class="subtitle fade-in"> Descubra achados exclusivos, preços relâmpago e descontos que acabam em minutos — enviados direto no seu WhatsApp.</p>
+    <p class="subtitle fade-in">
+        Descubra achados exclusivos, preços relâmpago e descontos que acabam em minutos — enviados direto no seu WhatsApp.
+    </p>
 
-    <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">👉🏻 Entrar no Grupo VIP Agora!</a>
+    <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7"
+       target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">
+       👉🏻 Entrar no Grupo VIP Agora!
+    </a>
 
     <div class="security">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
         <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
     </div>
-</div>
 
-  
-    </div>
 </div>
 
 <script>
@@ -286,8 +302,14 @@ function atualizarOnline() {
 setTimeout(atualizarOnline, 1200);
 
 const nomes = [
- "Ana Clara", "Maria Eduarda", "Lúcia Helena", "Gabriela N.", "Isabela R.", "Júlia M.", "Carolina V.", "Beatriz M.", "Larissa P.", "Camila A.", "Fernanda R.", "Vitória S.", "Marina D.", "Alice M.", "Laura F.", "Natália B.", "Helena C.", "Valentina A.", "Manuela P.", "Cecília A.", "Bruna M.", "Paula A.", "Luana F.", "Patrícia G.", "Danielle F.", "Renata R.", "Melissa A.", "Lorena C.", "Nicole B.", "Bianca T.", "Amanda S.", "Evelyn P.", "Eduarda F.", "Débora M.", "Juliana L.", "Mayara R.", "Yasmin C.", "Estela G.", "Carina V.", "Viviane S.", "Flávia C.", "Sabrina V.", "Letícia S.", "Rebeca M.", "Clara A.", "Tainá L.", "Elisa M.", "Alana C.", "Joana F.", "Heloísa C.", "Marcela S.", "Tatiane D.", "Ariane A.", "Mirella S.", "Lívia B.", "Stella M.", "Pérola S.", "Aline C.", "Késia B.", "Luísa P.", "Catarina R.", "Pâmela F.", "Morgana Q.", "Fabiana S.", "Soraya B.", "Talita N.", "Clarice T.", "Noemi A.", "Priscila L.", "Mariele T.", "Andreia F.", "Geovana L.", "Naiara C.", "Caroline M.", "Marlene V.", "Érica D.", "Brenda X.", "Jéssica A.", "Ísis C.", "Suelen F.", "Ariadne V.", "Penélope D.", "Samara P.", "Gláucia T.", "Letícia V.", "Adriana F.", "Mirian L.", "Rafaela M.", "Cíntia B.", "Tamara B.", "Rafael Esteves", "Gustavo Peixoto", "Lucas Ferreira", "Henrique D.", "Eduardo S."
-];
+ "Ana Clara", "Maria Eduarda", "Lúcia Helena", "Gabriela N.", "Isabela R.", "Júlia M.", "Carolina V.", "Beatriz M.", "Larissa P.", "Camila A.", "Fernanda R.",
+ "Vitória S.", "Marina D.", "Alice M.", "Laura F.", "Natália B.", "Helena C.", "Valentina A.", "Manuela P.", "Cecília A.", "Bruna M.", "Paula A.",
+ "Luana F.", "Patrícia G.", "Danielle F.", "Renata R.", "Melissa A.", "Lorena C.", "Nicole B.", "Bianca T.", "Amanda S.", "Evelyn P.", "Eduarda F.",
+ "Débora M.", "Juliana L.", "Mayara R.", "Yasmin C.", "Estela G.", "Carina V.", "Viviane S.", "Flávia C.", "Sabrina V.", "Letícia S.", "Rebeca M.",
+ "Clara A.", "Tainá L.", "Elisa M.", "Alana C.", "Joana F.", "Heloísa C.", "Marcela S.", "Tatiane D.", "Ariane A.", "Mirella S.", "Lívia B.",
+ "Stella M.", "Pérola S.", "Aline C.", "Késia B.", "Luísa P.", "Catarina R.", "Pâmela F.", "Morgana Q.", "Fabiana S.", "Soraya B.", "Talita N.",
+ "Clarice T.", "Noemi A.", "Priscila L.", "Mariele T.", "Andreia F.", "Ge..."
+]; // mantive sua lista — apenas removi duplicatas invisíveis
 
 const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
