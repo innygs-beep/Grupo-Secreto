@@ -25,5 +25,28 @@
 </head>
 <body>
   <a class="vip-btn" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener noreferrer" aria-label="Entrar para o GRUPO VIP agora!">Entrar para o GRUPO VIP agora!</a>
+  <script>
+// Detecta se está abrindo dentro do navegador interno do Instagram
+const ua = navigator.userAgent || navigator.vendor || window.opera;
+const isInstagram = ua.includes("Instagram");
+
+// Bloqueio do carregamento bugado + instrução ao usuário
+if (isInstagram) {
+    document.body.innerHTML = `
+        <div style="
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            line-height: 1.6;
+        ">
+            <h2>Abra no navegador para continuar</h2>
+            <p>O Instagram está bloqueando o carregamento da página.</p>
+            <p><b>Toque nos três pontinhos (⋮) no canto superior direito</b> e selecione:</p>
+            <p><b>“Abrir no navegador”</b></p>
+        </div>
+    `;
+}
+</script>
+
 </body>
 </html>
