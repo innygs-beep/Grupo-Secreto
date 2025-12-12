@@ -150,7 +150,7 @@ h1 {
     font-size: 15px;
     font-weight: 500;
     line-height: 1.6;
-    margin-bottom 12px;
+    margin-bottom: 12px;
 }
 
 .fade-in {
@@ -200,7 +200,7 @@ a.button:hover::after { left: 200%; }
 .security { color: #6d523d; font-size: 12px; margin-top: 12px; display:inline-flex; gap:8px; align-items:center; }
 .security img { width:16px; height:16px; }
 
-POPUPS
+/* POPUPS */
 .popup {
     position: fixed;
     bottom: 20px;
@@ -252,7 +252,6 @@ POPUPS
 
     <h1>GRUPO VIP DE OFERTAS ⤵️</h1>
 
-    <!-- 🔥 NOVO BLOCO LIMPO (sem os textos azuis) -->
     <p class="subtitle fade-in"> Descubra achados exclusivos, preços relâmpago e descontos que acabam em minutos — enviados direto no seu WhatsApp.</p>
 
     <a class="button" href="https://chat.whatsapp.com/JG2XxRmeaNE8JdzGbditc7" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">👉🏻 Entrar no Grupo VIP Agora!</a>
@@ -260,10 +259,6 @@ POPUPS
     <div class="security">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" />
         <span>Entrada segura, sem SPAM. Saia quando quiser.</span>
-    </div>
-</div>
-
-
     </div>
 </div>
 
@@ -289,8 +284,8 @@ const nomes = [
  "Ana Clara", "Maria Eduarda", "Lúcia Helena", "Gabriela N.", "Isabela R.", "Júlia M.", "Carolina V.", "Beatriz M.", "Larissa P.", "Camila A.", "Fernanda R.", "Vitória S.", "Marina D.", "Alice M.", "Laura F.", "Natália B.", "Helena C.", "Valentina A.", "Manuela P.", "Cecília A.", "Bruna M.", "Paula A.", "Luana F.", "Patrícia G.", "Danielle F.", "Renata R.", "Melissa A.", "Lorena C.", "Nicole B.", "Bianca T.", "Amanda S.", "Evelyn P.", "Eduarda F.", "Débora M.", "Juliana L.", "Mayara R.", "Yasmin C.", "Estela G.", "Carina V.", "Viviane S.", "Flávia C.", "Sabrina V.", "Letícia S.", "Rebeca M.", "Clara A.", "Tainá L.", "Elisa M.", "Alana C.", "Joana F.", "Heloísa C.", "Marcela S.", "Tatiane D.", "Ariane A.", "Mirella S.", "Lívia B.", "Stella M.", "Pérola S.", "Aline C.", "Késia B.", "Luísa P.", "Catarina R.", "Pâmela F.", "Morgana Q.", "Fabiana S.", "Soraya B.", "Talita N.", "Clarice T.", "Noemi A.", "Priscila L.", "Mariele T.", "Andreia F.", "Geovana L.", "Naiara C.", "Caroline M.", "Marlene V.", "Érica D.", "Brenda X.", "Jéssica A.", "Ísis C.", "Suelen F.", "Ariadne V.", "Penélope D.", "Samara P.", "Gláucia T.", "Letícia V.", "Adriana F.", "Mirian L.", "Rafaela M.", "Cíntia B.", "Tamara B.", "Rafael Esteves", "Gustavo Peixoto", "Lucas Ferreira", "Henrique D.", "Eduardo S."
 ];
 
-
-// ÁUDIO REMOVIDO: const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
+// REMOVIDO: audio
+// const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_ebf2d8f3a1.mp3?filename=notification-5-13866.mp3");
 
 function atualizaVisualVagas() {
     if (vagas <= 0) {
@@ -323,9 +318,10 @@ function mostrarPopup() {
 
     setTimeout(()=> popup.classList.add('show'), 10);
 
-    // ÁUDIO REMOVIDO: audio.currentTime = 0;
-    // ÁUDIO REMOVIDO: audio.volume = 0.12;
-    // ÁUDIO REMOVIDO: audio.play().catch(()=>{});
+    // REMOVIDO SOMENTE O ÁUDIO
+    // audio.currentTime = 0;
+    // audio.volume = 0.12;
+    // audio.play().catch(()=>{});
 
     diminuirVaga();
 
